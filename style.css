@@ -31,3 +31,7 @@
 .front {
 	background-color: aqua;
 }
+
+.button {
+	border: 1px solid black;
+}
