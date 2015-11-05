@@ -2,16 +2,20 @@
 
 var $board = $('.board');
 
-var turn = [];
+//The turn around should maybe be in the Game object, maybe rename to turnPicks
+// var turn = [];
 
 var currentGame;
 
 var $turnCounter = $('#turns');
+var $matchesLeft = $('#matches-left');
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
-	this.turns = 0;
+	this.numTurns = 0;
 	this.cards = [];
+	this.numMatchesLeft = numPairs;
+	this.turnPicks = [];
 };
 
 Game.prototype.getCards = function() {
@@ -26,6 +30,35 @@ Game.prototype.deal = function() {
 		card.place();
 	});
 };
+
+Game.prototype.startGame = function() {
+	this.getCards();
+	//TODO: SHUFFLE!!!!
+	//this.shuffle()
+	this.deal();
+	$turnCounter.text(this.numTurns);
+	$matchesLeft.text(this.numMatchesLeft);
+};
+
+Game.prototype.evaluateTurn = function() {
+	if (this.turnPicks[0].value === this.turnPicks[1].value) {
+		//TODO: flash a message in the match display div instead
+		console.log('MATCH!');
+		this.numMatchesLeft--;
+		$matchesLeft.text(this.numMatchesLeft);
+		//TODO: if numMatchesLeft === 0, end game!
+	} else {
+		this.turnPicks.forEach(function(card) {
+			window.setTimeout(function() {
+				card.reset();
+			}, 2000);
+		});
+	}
+	this.numTurns++;
+	$turnCounter.text(this.numTurns);
+	this.turnPicks = [];
+};
+
 
 var Card = function(value) {
 	this.value = value;
@@ -54,32 +87,22 @@ Card.prototype.activate = function() {
 
 Card.prototype.choose = function() {
 	this.flip();
-	turn.push(this);
-	if (turn.length > 1) {
-		evaluateTurn();
+	currentGame.turnPicks.push(this);
+	if (currentGame.turnPicks.length > 1) {
+		currentGame.evaluateTurn();
 	}
 };
 
-var evaluateTurn = function() {
-	if (turn[0].value === turn[1].value) {
-		console.log('MATCH!');
-		//TODO: flash a message in the match display div instead
-	} else {
-		// I THINK I NEED A CLOSURE HEEEEEERE
-		// window.setTimeout(function() {
-		turn[0].flip();
-		turn[0].activate();
-		turn[1].flip();
-		turn[1].activate();
-		// }, 2000);
-	}
-	currentGame.turns++;
-	$turnCounter.text(currentGame.turns);
-	turn = [];
+Card.prototype.reset = function() {
+	this.flip();
+	this.activate();
 };
 
 
 
-currentGame = new Game(6);
-currentGame.getCards();
-currentGame.deal();
+//TODO: New Game button
+
+currentGame = new Game(10);
+currentGame.startGame();
+// currentGame.getCards();
+// currentGame.deal();
