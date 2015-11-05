@@ -1,0 +1,33 @@
+/** {
+	border: 1px solid green;
+}*/
+
+.bar {
+	background-color: lightgrey;
+	border: 2px solid grey;
+}
+
+.bar p,
+.bar label,
+.bar div {
+	display: inline;
+}
+
+.board {
+	height: 600px;
+}
+
+.card {
+	height: 100px;
+	width: 50px;
+	float: left;
+	margin: 10px;
+}
+
+.back {
+	background-color: brown;
+}
+
+.front {
+	background-color: aqua;
+}
