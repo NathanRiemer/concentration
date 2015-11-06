@@ -34,6 +34,19 @@ List of technologies used:
 -  Javascript
 -  jQuery
 
+I adapted my shuffle method (copied below) from http://www.frankmitchell.org/2015/01/fisher-yates/ which is an implementation of the Fisher-Yates Shuffle. I only did so after I was confident that I understood how the Fisher-Yates algorith works.
+
+```
+Game.prototype.shuffle = function() {
+	for (var i=this.cards.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i+1));
+		var temp = this.cards[i];
+		this.cards[i] = this.cards[j];
+		this.cards[j] = temp;
+	}
+};
+```
+
 Description of app:
 
 Link to playable app:

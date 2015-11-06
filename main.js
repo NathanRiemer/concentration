@@ -1,5 +1,13 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
+//TOP PRIORITIES:
+//WINNING
+//NEW GAME BUTTON (WITH SIZE SELECTOR)
+//MATCH NOTIFIER
+//IMAGES INSTEAD OF NUMBERS
+//HIGH SCORE GALLERY
+//TIMER
+
 var $board = $('.board');
 
 //The turn around should maybe be in the Game object, maybe rename to turnPicks
@@ -31,10 +39,18 @@ Game.prototype.deal = function() {
 	});
 };
 
+Game.prototype.shuffle = function() {
+	for (var i=this.cards.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i+1));
+		var temp = this.cards[i];
+		this.cards[i] = this.cards[j];
+		this.cards[j] = temp;
+	}
+};
+
 Game.prototype.startGame = function() {
 	this.getCards();
-	//TODO: SHUFFLE!!!!
-	//this.shuffle()
+	this.shuffle();
 	this.deal();
 	$turnCounter.text(this.numTurns);
 	$matchesLeft.text(this.numMatchesLeft);
@@ -47,6 +63,9 @@ Game.prototype.evaluateTurn = function() {
 		this.numMatchesLeft--;
 		$matchesLeft.text(this.numMatchesLeft);
 		//TODO: if numMatchesLeft === 0, end game!
+		if (!this.numMatchesLeft) {
+			console.log('YOU WIN');
+		}
 	} else {
 		this.turnPicks.forEach(function(card) {
 			window.setTimeout(function() {
@@ -102,7 +121,7 @@ Card.prototype.reset = function() {
 
 //TODO: New Game button
 
-currentGame = new Game(10);
+currentGame = new Game(6);
 currentGame.startGame();
 // currentGame.getCards();
 // currentGame.deal();
