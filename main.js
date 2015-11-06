@@ -5,6 +5,10 @@
 	//Should probably use a high score object
 //TIMER
 //MAKE THIS THING LOOK GOOD
+	//Sizing
+	//Better MATCH/NOPE/VICTORY THING
+	//LAYOUT AND SPACING
+		//CONSIDER UPDATING WIDTHS OF THINGS
 
 var $board = $('.board');
 
@@ -15,29 +19,21 @@ var $newGameBtn = $('.new.button');
 
 
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
+//Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
 
-//Flash logo and Firestorm logo could be better
-// var imageArray = [
-// 	'./img/superman.jpg',
-// 	'./img/batman.jpg',
-// 	'./img/wonderwoman.jpg',
-// 	'./img/flash.png',
-// 	'./img/gl.jpg',
-// 	'./img/aquaman.jpg',
-// 	'./img/cyborg.jpg',
-// 	'./img/firestorm.jpg'];
+		// './img/dogs/labrador-retriever.jpg',
 
 var images = {
 	superHeroLogos: [
-	'./img/superHeroLogos/superman.jpg',
-	'./img/superHeroLogos/batman.jpg',
-	'./img/superHeroLogos/wonderwoman.jpg',
-	'./img/superHeroLogos/flash.png',
-	'./img/superHeroLogos/gl.jpg',
-	'./img/superHeroLogos/aquaman.jpg',
-	'./img/superHeroLogos/cyborg.jpg',
-	'./img/superHeroLogos/firestorm.jpg'
-		],
+		'./img/superHeroLogos/superman.jpg',
+		'./img/superHeroLogos/batman.jpg',
+		'./img/superHeroLogos/wonderwoman.jpg',
+		'./img/superHeroLogos/flash.png',
+		'./img/superHeroLogos/gl.jpg',
+		'./img/superHeroLogos/aquaman.jpg',
+		'./img/superHeroLogos/cyborg.jpg',
+		'./img/superHeroLogos/firestorm.jpg'
+	],
 
 	dogs: [
 		'./img/dogs/bassethound.jpg',
@@ -46,7 +42,21 @@ var images = {
 		'./img/dogs/dalmatian.jpg',
 		'./img/dogs/french-bulldog.jpg',
 		'./img/dogs/german-shepherd.jpg',
-		'./img/dogs/malamute.jpg'
+		'./img/dogs/malamute.jpg',
+		'./img/dogs/corgi.jpg',
+		'./img/dogs/english-sheepdog.jpg',
+		'./img/dogs/gold-retriever.jpg',
+		'./img/dogs/great-dane.jpg',
+		'./img/dogs/greyhound.jpg',
+		'./img/dogs/afghan-hound.jpg',
+		'./img/dogs/newfie.jpg',
+		'./img/dogs/poodle.jpg',
+		'./img/dogs/pug.jpg',
+		'./img/dogs/puli.jpg',
+		'./img/dogs/saint-bernard.jpg',
+		'./img/dogs/shiba-inu.jpg',
+		'./img/dogs/weimaraner.jpg',
+		'./img/dogs/chihuahua.jpg'
 	]
 };
 
@@ -64,8 +74,8 @@ var Game = function(numPairs) {
 		this.$div = $('<div>');
 		this.urlString = 'url(' + game.imageArray[value] + ')';
 		this.$div.addClass('card back sized');
-		//Eventually this will get changed to set an image value
-		this.$div.text(this.value);
+		//Could also had just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
+		// this.$div.text(this.value);
 	};
 
 	this.Card.prototype.showFace = function() {
