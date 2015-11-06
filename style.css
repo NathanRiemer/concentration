@@ -59,6 +59,7 @@
 .back {
 	background-color: brown;
 	background-image: none;
+	cursor: pointer;
 }
 
 .front {

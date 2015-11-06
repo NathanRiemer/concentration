@@ -71,6 +71,8 @@ var images = {
 	]
 };
 
+var scoreboard = {};
+
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
 	this.numTurns = 0;
@@ -224,7 +226,7 @@ Game.prototype.startTimer = function() {
 
 Game.prototype.tick = function(game) {
 	$timer.text(game.seconds++);
-}
+};
 
 Game.prototype.stopTimer = function() {
 	window.clearInterval(this.timerId);
