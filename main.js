@@ -23,7 +23,7 @@ var Game = function(numPairs) {
 	this.Card = function(value) {
 		this.value = value;
 		this.$div = $('<div>');
-		this.$div.addClass('card back');
+		this.$div.addClass('card back sized');
 		//Eventually this will get changed to set an image value
 		this.$div.text(this.value);
 	};
@@ -60,10 +60,28 @@ var Game = function(numPairs) {
 };
 
 Game.prototype.getCards = function() {
+	this.setCardDimensions();
 	for (var i=0; i < this.numPairs; i++) {
 		this.cards.push(new this.Card(i));
 		this.cards.push(new this.Card(i));
 	}
+};
+
+Game.prototype.setCardDimensions = function() {
+	var dimension;
+	if (this.numPairs < 9) {
+		dimension = '120px';
+	} else if (this.numPairs < 12) {
+		dimension = '100px';
+	} else if (this.numPairs < 18) {
+		dimension = '80px';
+	} else {
+		dimension = '65px';
+	}
+
+	var $style = $('<style type="text/css">').appendTo('head');
+	var css = '.sized { height: ' + dimension + '; width: ' + dimension + ';}';
+	$style.html(css);
 };
 
 Game.prototype.deal = function() {
@@ -119,6 +137,7 @@ Game.prototype.updateDisplay = function(message) {
 
 Game.prototype.clearBoard = function() {
 	$board.empty();
+	$('style').remove();
 };
 
 var currentGame = new Game(6);

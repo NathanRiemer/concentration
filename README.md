@@ -47,6 +47,27 @@ Game.prototype.shuffle = function() {
 };
 ```
 
+I adapted my setCardDimensions method from http://stackoverflow.com/questions/7125453/modifying-css-class-property-values-on-the-fly-with-javascript-jquery -- how cool is this! Adding a new class to the css via a style tag added to via jQuery... super rad!
+```
+Game.prototype.setCardDimensions = function() {
+	var dimension;
+	if (this.numPairs < 9) {
+		dimension = '120px';
+	} else if (this.numPairs < 12) {
+		dimension = '100px';
+	} else if (this.numPairs < 18) {
+		dimension = '80px';
+	} else {
+		dimension = '65px';
+	}
+
+	var $style = $('<style type="text/css">').appendTo('head');
+	var css = '.sized { height: ' + dimension + '; width: ' + dimension + ';}';
+	$style.html(css);
+};
+```
+
+
 Description of app:
 
 Link to playable app:
