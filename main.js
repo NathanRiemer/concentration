@@ -136,6 +136,7 @@ Game.prototype.updateDisplay = function(message) {
 };
 
 Game.prototype.clearBoard = function() {
+	$('.back').off();
 	$board.empty();
 	$('style').remove();
 };
