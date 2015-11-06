@@ -186,6 +186,8 @@ Game.prototype.startGame = function() {
 };
 
 Game.prototype.evaluateTurn = function() {
+	this.numTurns++;
+	$turnCounter.text(this.numTurns);
 	if (this.turnPicks[0].value === this.turnPicks[1].value) {
 		this.updateDisplay('MATCH');
 		this.numMatchesLeft--;
@@ -193,6 +195,7 @@ Game.prototype.evaluateTurn = function() {
 		//TODO: if numMatchesLeft === 0, end game!
 		if (!this.numMatchesLeft) {
 			this.updateDisplay('VICTORY');
+			this.won();
 		}
 	} else {
 		this.updateDisplay('NOPE');
@@ -202,8 +205,6 @@ Game.prototype.evaluateTurn = function() {
 			}, 2000);
 		}); // end of forEach
 	} // end of else
-	this.numTurns++;
-	$turnCounter.text(this.numTurns);
 	this.turnPicks = [];
 };
 
@@ -211,6 +212,13 @@ Game.prototype.updateDisplay = function(message) {
 	$display.text(message);
 	message = message.toLowerCase() + ' display';
 	$display.attr('class', message);
+};
+
+Game.prototype.won = function() {
+	var $scoreLog = $('<li>');
+	var logLine = 'Pairs: ' + this.numPairs + ' Turns: ' + this.numTurns;
+	$scoreLog.text(logLine);
+	$scoreLog.appendTo($('ol'));
 };
 
 Game.prototype.clearBoard = function() {
