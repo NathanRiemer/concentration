@@ -3,7 +3,7 @@
 //TOP PRIORITIES:
 //HIGH SCORE GALLERY
 	//Should probably use a high score object
-//TIMER
+//TIMER: PAUSE/UNPAUSE
 //MAKE THIS THING LOOK GOOD
 	//Sizing
 	//Better MATCH/NOPE/VICTORY THING
@@ -24,7 +24,7 @@ var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
 var $display = $('.display');
 var $newGameBtn = $('.new.button');
-
+var $timer = $('#timer');
 
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
 //Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
@@ -81,6 +81,8 @@ var Game = function(numPairs) {
 	this.imageArray = images[this.imageFolder];
 	this.shuffle(this.imageArray);
 	this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
+	this.seconds = 0;
+	this.timerId = this.startTimer();
 	var game = this;
 
 	this.Card = function(value) {
@@ -134,7 +136,8 @@ var Game = function(numPairs) {
 		this.hideFace();
 		this.activate();
 	};
-};
+
+}; //end of Game constructor
 
 Game.prototype.getCards = function() {
 	this.setCardDimensions();
@@ -214,9 +217,23 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
+Game.prototype.startTimer = function() {
+	var id =  setInterval(this.tick, 1000, this);
+	return id;
+};
+
+Game.prototype.tick = function(game) {
+	$timer.text(game.seconds++);
+}
+
+Game.prototype.stopTimer = function() {
+	window.clearInterval(this.timerId);
+};
+
 Game.prototype.won = function() {
+	this.stopTimer();
 	var $scoreLog = $('<li>');
-	var logLine = 'Pairs: ' + this.numPairs + ' Turns: ' + this.numTurns;
+	var logLine = 'Pairs: ' + this.numPairs + ' Turns: ' + this.numTurns + ' Seconds: ' + this.seconds;
 	$scoreLog.text(logLine);
 	$scoreLog.appendTo($('ol'));
 };
@@ -225,6 +242,7 @@ Game.prototype.clearBoard = function() {
 	$('.back').off();
 	$board.empty();
 	$('style').remove();
+	this.stopTimer();
 };
 
 var currentGame = new Game(6);
