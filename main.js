@@ -3,7 +3,10 @@
 //TOP PRIORITIES:
 //IMAGES INSTEAD OF NUMBERS
 //HIGH SCORE GALLERY
+	//Should probably use a high score object
 //TIMER
+//MULTIPLE IMAGE SETS THAT USER CAN CHOOSE FROM
+//MAKE THIS THING LOOK GOOD
 
 var $board = $('.board');
 
@@ -11,6 +14,14 @@ var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
 var $display = $('.display');
 var $newGameBtn = $('.new.button');
+
+var imageArray = [
+	'./img/superman.jpg',
+	'./img/batman.jpg',
+	'./img/wonderwoman.jpg',
+	'./img/flash.png',
+	'./img/gl.jpg',
+	'./img/aquaman.jpg'];
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
@@ -23,15 +34,30 @@ var Game = function(numPairs) {
 	this.Card = function(value) {
 		this.value = value;
 		this.$div = $('<div>');
+		this.urlString = 'url(' + imageArray[value] + ')'
+		// this.$div.css('background-image', this.urlString);
 		this.$div.addClass('card back sized');
 		//Eventually this will get changed to set an image value
 		this.$div.text(this.value);
 	};
 
-	this.Card.prototype.flip = function() {
-		this.$div.toggleClass('back');
-		this.$div.toggleClass('front');
+	this.Card.prototype.showFace = function() {
+		this.$div.removeClass('back');
+		this.$div.css('background-image', this.urlString);
+		this.$div.addClass('front');
 	};
+
+	this.Card.prototype.hideFace = function() {
+		this.$div.css('background-image', 'none');
+		this.$div.addClass('back');
+	};
+
+
+//Not currently in use
+	// this.Card.prototype.flip = function() {
+	// 	this.$div.toggleClass('back');
+	// 	this.$div.toggleClass('front');
+	// };
 
 	this.Card.prototype.place = function() {
 		$board.append(this.$div);
@@ -46,7 +72,8 @@ var Game = function(numPairs) {
 	};
 
 	this.Card.prototype.choose = function() {
-		this.flip();
+		// this.flip();
+		this.showFace();
 		game.turnPicks.push(this);
 		if (game.turnPicks.length > 1) {
 			game.evaluateTurn();
@@ -54,7 +81,7 @@ var Game = function(numPairs) {
 	};
 
 	this.Card.prototype.reset = function() {
-		this.flip();
+		this.hideFace();
 		this.activate();
 	};
 };

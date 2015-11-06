@@ -59,10 +59,12 @@
 
 .back {
 	background-color: brown;
+	background-image: none;
 }
 
 .front {
-	background-color: aqua;
+	/*background-color: aqua;*/
+	background-size: contain;
 }
 
 .button {
