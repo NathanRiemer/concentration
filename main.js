@@ -9,6 +9,14 @@
 	//Better MATCH/NOPE/VICTORY THING
 	//LAYOUT AND SPACING
 		//CONSIDER UPDATING WIDTHS OF THINGS
+	//ANIMATION
+		//Flipping!
+		//Dealing?!
+//IMAGES
+	//Fill out superHeroLogos
+	//Add new imagesets?
+		//colors?
+		//numbers?
 
 var $board = $('.board');
 
@@ -23,40 +31,43 @@ var $newGameBtn = $('.new.button');
 
 		// './img/dogs/labrador-retriever.jpg',
 
+//TODO: Ask Sung if it makes sense to have this inside the Game object. In favor: the Game object makes changes to it. Against: it exists outside the scope of an individual game. Okay, I'm pretty sure it should stay outside. Hmm. Maybe it should be a separate file? Ask Sung about that. 
+
+//OOOH I should look into making the range of pairs available dependent on the number of images in a given folder.
 var images = {
 	superHeroLogos: [
-		'./img/superHeroLogos/superman.jpg',
-		'./img/superHeroLogos/batman.jpg',
-		'./img/superHeroLogos/wonderwoman.jpg',
-		'./img/superHeroLogos/flash.png',
-		'./img/superHeroLogos/gl.jpg',
-		'./img/superHeroLogos/aquaman.jpg',
-		'./img/superHeroLogos/cyborg.jpg',
-		'./img/superHeroLogos/firestorm.jpg'
+		'superman.jpg',
+		'batman.jpg',
+		'wonderwoman.jpg',
+		'flash.png',
+		'gl.jpg',
+		'aquaman.jpg',
+		'cyborg.jpg',
+		'firestorm.jpg'
 	],
 
 	dogs: [
-		'./img/dogs/bassethound.jpg',
-		'./img/dogs/cockerspaniel.jpg',
-		'./img/dogs/dachsund.jpg',
-		'./img/dogs/dalmatian.jpg',
-		'./img/dogs/french-bulldog.jpg',
-		'./img/dogs/german-shepherd.jpg',
-		'./img/dogs/malamute.jpg',
-		'./img/dogs/corgi.jpg',
-		'./img/dogs/english-sheepdog.jpg',
-		'./img/dogs/gold-retriever.jpg',
-		'./img/dogs/great-dane.jpg',
-		'./img/dogs/greyhound.jpg',
-		'./img/dogs/afghan-hound.jpg',
-		'./img/dogs/newfie.jpg',
-		'./img/dogs/poodle.jpg',
-		'./img/dogs/pug.jpg',
-		'./img/dogs/puli.jpg',
-		'./img/dogs/saint-bernard.jpg',
-		'./img/dogs/shiba-inu.jpg',
-		'./img/dogs/weimaraner.jpg',
-		'./img/dogs/chihuahua.jpg'
+		'bassethound.jpg',
+		'cockerspaniel.jpg',
+		'dachsund.jpg',
+		'dalmatian.jpg',
+		'french-bulldog.jpg',
+		'german-shepherd.jpg',
+		'malamute.jpg',
+		'corgi.jpg',
+		'english-sheepdog.jpg',
+		'gold-retriever.jpg',
+		'great-dane.jpg',
+		'greyhound.jpg',
+		'afghan-hound.jpg',
+		'newfie.jpg',
+		'poodle.jpg',
+		'pug.jpg',
+		'puli.jpg',
+		'saint-bernard.jpg',
+		'shiba-inu.jpg',
+		'weimaraner.jpg',
+		'chihuahua.jpg'
 	]
 };
 
@@ -66,13 +77,16 @@ var Game = function(numPairs) {
 	this.cards = [];
 	this.numMatchesLeft = numPairs;
 	this.turnPicks = [];
-	this.imageArray = images[$('select').val()];
+	this.imageFolder = $('select').val();
+	this.imageArray = images[this.imageFolder];
+	this.shuffle(this.imageArray);
+	this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
 	var game = this;
 
 	this.Card = function(value) {
 		this.value = value;
 		this.$div = $('<div>');
-		this.urlString = 'url(' + game.imageArray[value] + ')';
+		this.urlString = game.urlBase + game.imageArray[value] + '\')';
 		this.$div.addClass('card back sized');
 		//Could also had just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
 		// this.$div.text(this.value);
@@ -88,7 +102,6 @@ var Game = function(numPairs) {
 		this.$div.css('background-image', 'none');
 		this.$div.addClass('back');
 	};
-
 
 //Not currently in use
 	// this.Card.prototype.flip = function() {
@@ -154,18 +167,19 @@ Game.prototype.deal = function() {
 	});
 };
 
-Game.prototype.shuffle = function() {
-	for (var i=this.cards.length - 1; i > 0; i--) {
+//this.cards
+Game.prototype.shuffle = function(array) {
+	for (var i=array.length - 1; i > 0; i--) {
 		var j = Math.floor(Math.random() * (i+1));
-		var temp = this.cards[i];
-		this.cards[i] = this.cards[j];
-		this.cards[j] = temp;
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
 	}
 };
 
 Game.prototype.startGame = function() {
 	this.getCards();
-	this.shuffle();
+	this.shuffle(this.cards);
 	this.deal();
 	$turnCounter.text(this.numTurns);
 	$matchesLeft.text(this.numMatchesLeft);
