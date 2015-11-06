@@ -10,13 +10,11 @@
 
 var $board = $('.board');
 
-//The turn around should maybe be in the Game object, maybe rename to turnPicks
-// var turn = [];
-
 var currentGame;
 
 var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
+var $display = $('.display');
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
@@ -58,26 +56,31 @@ Game.prototype.startGame = function() {
 
 Game.prototype.evaluateTurn = function() {
 	if (this.turnPicks[0].value === this.turnPicks[1].value) {
-		//TODO: flash a message in the match display div instead
-		console.log('MATCH!');
+		this.updateDisplay('MATCH');
 		this.numMatchesLeft--;
 		$matchesLeft.text(this.numMatchesLeft);
 		//TODO: if numMatchesLeft === 0, end game!
 		if (!this.numMatchesLeft) {
-			console.log('YOU WIN');
+			this.updateDisplay('VICTORY');
 		}
 	} else {
+		this.updateDisplay('NOPE');
 		this.turnPicks.forEach(function(card) {
 			window.setTimeout(function() {
 				card.reset();
 			}, 2000);
-		});
-	}
+		}); // end of forEach
+	} // end of else
 	this.numTurns++;
 	$turnCounter.text(this.numTurns);
 	this.turnPicks = [];
 };
 
+Game.prototype.updateDisplay = function(message) {
+	$display.text(message);
+	message = message.toLowerCase() + ' display';
+	$display.attr('class', message);
+};
 
 var Card = function(value) {
 	this.value = value;

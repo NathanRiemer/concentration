@@ -13,8 +13,21 @@
 	display: inline;
 }
 
-.match.display {
+.display {
 	width: 20px;
+	color: white;
+}
+
+.match {
+	background-color: purple;
+}
+
+.nope {
+	background-color: red;
+}
+
+.victory {
+	background-color: gold;
 }
 
 .board {
