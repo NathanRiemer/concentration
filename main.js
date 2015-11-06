@@ -1,11 +1,9 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//IMAGES INSTEAD OF NUMBERS
 //HIGH SCORE GALLERY
 	//Should probably use a high score object
 //TIMER
-//MULTIPLE IMAGE SETS THAT USER CAN CHOOSE FROM
 //MAKE THIS THING LOOK GOOD
 
 var $board = $('.board');
@@ -15,13 +13,42 @@ var $matchesLeft = $('#matches-left');
 var $display = $('.display');
 var $newGameBtn = $('.new.button');
 
-var imageArray = [
-	'./img/superman.jpg',
-	'./img/batman.jpg',
-	'./img/wonderwoman.jpg',
-	'./img/flash.png',
-	'./img/gl.jpg',
-	'./img/aquaman.jpg'];
+
+//TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
+
+//Flash logo and Firestorm logo could be better
+// var imageArray = [
+// 	'./img/superman.jpg',
+// 	'./img/batman.jpg',
+// 	'./img/wonderwoman.jpg',
+// 	'./img/flash.png',
+// 	'./img/gl.jpg',
+// 	'./img/aquaman.jpg',
+// 	'./img/cyborg.jpg',
+// 	'./img/firestorm.jpg'];
+
+var images = {
+	superHeroLogos: [
+	'./img/superHeroLogos/superman.jpg',
+	'./img/superHeroLogos/batman.jpg',
+	'./img/superHeroLogos/wonderwoman.jpg',
+	'./img/superHeroLogos/flash.png',
+	'./img/superHeroLogos/gl.jpg',
+	'./img/superHeroLogos/aquaman.jpg',
+	'./img/superHeroLogos/cyborg.jpg',
+	'./img/superHeroLogos/firestorm.jpg'
+		],
+
+	dogs: [
+		'./img/dogs/bassethound.jpg',
+		'./img/dogs/cockerspaniel.jpg',
+		'./img/dogs/dachsund.jpg',
+		'./img/dogs/dalmatian.jpg',
+		'./img/dogs/french-bulldog.jpg',
+		'./img/dogs/german-shepherd.jpg',
+		'./img/dogs/malamute.jpg'
+	]
+};
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
@@ -29,13 +56,13 @@ var Game = function(numPairs) {
 	this.cards = [];
 	this.numMatchesLeft = numPairs;
 	this.turnPicks = [];
+	this.imageArray = images[$('select').val()];
 	var game = this;
 
 	this.Card = function(value) {
 		this.value = value;
 		this.$div = $('<div>');
-		this.urlString = 'url(' + imageArray[value] + ')'
-		// this.$div.css('background-image', this.urlString);
+		this.urlString = 'url(' + game.imageArray[value] + ')';
 		this.$div.addClass('card back sized');
 		//Eventually this will get changed to set an image value
 		this.$div.text(this.value);
