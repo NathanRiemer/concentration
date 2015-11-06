@@ -53,3 +53,7 @@
 .button {
 	border: 1px solid black;
 }
+
+.pending {
+	text-decoration: line-through;
+}

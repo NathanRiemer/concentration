@@ -1,7 +1,6 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//NEW GAME BUTTON (WITH SIZE SELECTOR)
 //IMAGES INSTEAD OF NUMBERS
 //HIGH SCORE GALLERY
 //TIMER
@@ -11,6 +10,7 @@ var $board = $('.board');
 var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
 var $display = $('.display');
+var $newGameBtn = $('.new.button');
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
@@ -117,13 +117,15 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
-
-
-
-
-//TODO: New Game button
+Game.prototype.clearBoard = function() {
+	$board.empty();
+};
 
 var currentGame = new Game(6);
 currentGame.startGame();
-// currentGame.getCards();
-// currentGame.deal();
+
+$newGameBtn.on('click', function() {
+	currentGame.clearBoard();
+	currentGame = new Game($('#pair-number').val());
+	currentGame.startGame();
+});
