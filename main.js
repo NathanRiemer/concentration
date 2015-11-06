@@ -1,16 +1,12 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//WINNING
 //NEW GAME BUTTON (WITH SIZE SELECTOR)
-//MATCH NOTIFIER
 //IMAGES INSTEAD OF NUMBERS
 //HIGH SCORE GALLERY
 //TIMER
 
 var $board = $('.board');
-
-var currentGame;
 
 var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
@@ -22,12 +18,51 @@ var Game = function(numPairs) {
 	this.cards = [];
 	this.numMatchesLeft = numPairs;
 	this.turnPicks = [];
+	var game = this;
+
+	this.Card = function(value) {
+		this.value = value;
+		this.$div = $('<div>');
+		this.$div.addClass('card back');
+		//Eventually this will get changed to set an image value
+		this.$div.text(this.value);
+	};
+
+	this.Card.prototype.flip = function() {
+		this.$div.toggleClass('back');
+		this.$div.toggleClass('front');
+	};
+
+	this.Card.prototype.place = function() {
+		$board.append(this.$div);
+		this.activate();
+	};
+
+	this.Card.prototype.activate = function() {
+		var card = this;
+		this.$div.one('click', function() {
+			card.choose();
+		});
+	};
+
+	this.Card.prototype.choose = function() {
+		this.flip();
+		game.turnPicks.push(this);
+		if (game.turnPicks.length > 1) {
+			game.evaluateTurn();
+		}
+	};
+
+	this.Card.prototype.reset = function() {
+		this.flip();
+		this.activate();
+	};
 };
 
 Game.prototype.getCards = function() {
 	for (var i=0; i < this.numPairs; i++) {
-		this.cards.push(new Card(i));
-		this.cards.push(new Card(i));
+		this.cards.push(new this.Card(i));
+		this.cards.push(new this.Card(i));
 	}
 };
 
@@ -82,49 +117,13 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
-var Card = function(value) {
-	this.value = value;
-	this.$div = $('<div>');
-	this.$div.addClass('card back');
-	//Eventually this will get changed to set an image value
-	this.$div.text(this.value);
-};
 
-Card.prototype.flip = function() {
-	this.$div.toggleClass('back');
-	this.$div.toggleClass('front');
-};
-
-Card.prototype.place = function() {
-	$board.append(this.$div);
-	this.activate();
-};
-
-Card.prototype.activate = function() {
-	var card = this;
-	this.$div.one('click', function() {
-		card.choose();
-	});
-};
-
-Card.prototype.choose = function() {
-	this.flip();
-	currentGame.turnPicks.push(this);
-	if (currentGame.turnPicks.length > 1) {
-		currentGame.evaluateTurn();
-	}
-};
-
-Card.prototype.reset = function() {
-	this.flip();
-	this.activate();
-};
 
 
 
 //TODO: New Game button
 
-currentGame = new Game(6);
+var currentGame = new Game(6);
 currentGame.startGame();
 // currentGame.getCards();
 // currentGame.deal();
