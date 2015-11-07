@@ -26,6 +26,8 @@ var $timer = $('#timer');
 var $highScoreBtn = $('.button.highscore');
 var $pauseBtn = $('.button.pause');
 
+var $highscoreGallery = $('.highscore.gallery');
+
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
 //Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
 
@@ -124,7 +126,7 @@ var Game = function(numPairs) {
 	this.Card.prototype.showFront = function() {
 		this.$div.removeClass('back');
 		this.$div.css('background-image', this.urlString);
-		this.$div.addClass('front');
+		// this.$div.addClass('front');
 	};
 
 	this.Card.prototype.showBack = function() {
@@ -207,6 +209,7 @@ Game.prototype.startGame = function() {
 	$turnCounter.text(this.numTurns);
 	$matchesLeft.text(this.numMatchesLeft);
 	$('li').removeClass('new');
+	$highscoreGallery.addClass('hidden');
 	this.startTimer(this);
 };
 
@@ -217,6 +220,8 @@ Game.prototype.evaluateTurn = function() {
 		this.updateDisplay('MATCH');
 		this.numMatchesLeft--;
 		$matchesLeft.text(this.numMatchesLeft);
+		this.turnPicks[0].$div.addClass('inactive');
+		this.turnPicks[1].$div.addClass('inactive');
 		if (!this.numMatchesLeft) {
 			this.updateDisplay('VICTORY');
 			this.won();
@@ -226,7 +231,7 @@ Game.prototype.evaluateTurn = function() {
 		this.turnPicks.forEach(function(card) {
 			window.setTimeout(function() {
 				card.reset();
-			}, 2000);
+			}, 1000);
 		}); // end of forEach
 	} // end of else
 	this.turnPicks = [];
@@ -308,6 +313,7 @@ Game.prototype.addHighScore = function(replaceRequired, category, value) {
 	$scoreLog.text(logLine);
 	$scoreLog.appendTo($('ul.'+category));
 	scoreboard[category][this.numPairs] = [value, $scoreLog];
+	$highscoreGallery.removeClass('hidden');
 };
 
 var currentGame = new Game(6);
@@ -320,6 +326,9 @@ $newGameBtn.on('click', function() {
 });
 
 $highScoreBtn.on('click', function() {
-	$('.highscore.gallery').toggleClass('hidden');
+	$highscoreGallery.toggleClass('hidden');
 });
 
+$highscoreGallery.on('click', function() {
+	$highscoreGallery.addClass('hidden');
+});
