@@ -244,7 +244,7 @@ Game.prototype.startTimer = function(game) {
 };
 
 Game.prototype.tick = function(game) {
-	$timer.text(game.seconds++);
+	$timer.text(++game.seconds);
 };
 
 Game.prototype.stopTimer = function() {
@@ -270,6 +270,7 @@ Game.prototype.clearBoard = function() {
 	$board.empty();
 	$('style').remove();
 	this.stopTimer();
+	$timer.text('0');
 };
 
 Game.prototype.checkForHighScore = function() {
