@@ -1,8 +1,6 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//HIGH SCORE GALLERY
-	//Should probably use a high score object
 //TIMER: PAUSE/UNPAUSE
 //MAKE THIS THING LOOK GOOD
 	//Sizing
@@ -71,7 +69,11 @@ var images = {
 	]
 };
 
-var scoreboard = {};
+var scoreboard = {
+	turns: {},
+	seconds: {}
+};
+
 
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
@@ -234,10 +236,7 @@ Game.prototype.stopTimer = function() {
 
 Game.prototype.won = function() {
 	this.stopTimer();
-	var $scoreLog = $('<li>');
-	var logLine = 'Pairs: ' + this.numPairs + ' Turns: ' + this.numTurns + ' Seconds: ' + this.seconds;
-	$scoreLog.text(logLine);
-	$scoreLog.appendTo($('ol'));
+	this.checkForHighScore();
 };
 
 Game.prototype.clearBoard = function() {
@@ -245,6 +244,33 @@ Game.prototype.clearBoard = function() {
 	$board.empty();
 	$('style').remove();
 	this.stopTimer();
+};
+
+Game.prototype.checkForHighScore = function() {
+	if (scoreboard['seconds'][this.numPairs]) {
+		if (scoreboard['seconds'][this.numPairs][0] > this.seconds) {
+			this.addHighScore(true, 'seconds', this.seconds);
+		}
+		if (scoreboard['turns'][this.numPairs][0] > this.numTurns) {
+			this.addHighScore(true, 'turns', this.numTurns);
+		}
+	} else {
+		this.addHighScore(false, 'turns', this.numTurns);
+		this.addHighScore(false, 'seconds', this.seconds);
+	}
+
+};
+
+Game.prototype.addHighScore = function(replaceRequired, category, value) {
+	if (replaceRequired) {
+		scoreboard[category][this.numPairs][1].remove();
+	}
+	var $scoreLog = $('<li>');
+	var logLine =  this.numPairs + ' Pairs: Completed in ' + value + ' ' + category;
+	$scoreLog.text(logLine);
+	$scoreLog.appendTo($('ul.'+category));
+	console.log($scoreLog);
+	scoreboard[category][this.numPairs] = [value, $scoreLog];
 };
 
 var currentGame = new Game(6);
