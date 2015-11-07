@@ -25,6 +25,7 @@ var $newGameBtn = $('.new.button');
 var $timer = $('#timer');
 
 var $highScoreBtn = $('.button.highscore');
+var $pauseBtn = $('.button.pause');
 
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
 //Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
@@ -88,7 +89,7 @@ var Game = function(numPairs) {
 	this.shuffle(this.imageArray);
 	this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
 	this.seconds = 0;
-	this.timerId = this.startTimer();
+	this.timerId;
 	var game = this;
 
 	this.Card = function(value) {
@@ -110,12 +111,6 @@ var Game = function(numPairs) {
 		this.$div.css('background-image', 'none');
 		this.$div.addClass('back');
 	};
-
-//Not currently in use
-	// this.Card.prototype.flip = function() {
-	// 	this.$div.toggleClass('back');
-	// 	this.$div.toggleClass('front');
-	// };
 
 	this.Card.prototype.place = function() {
 		$board.append(this.$div);
@@ -176,7 +171,6 @@ Game.prototype.deal = function() {
 	});
 };
 
-//this.cards
 Game.prototype.shuffle = function(array) {
 	for (var i=array.length - 1; i > 0; i--) {
 		var j = Math.floor(Math.random() * (i+1));
@@ -192,6 +186,7 @@ Game.prototype.startGame = function() {
 	this.deal();
 	$turnCounter.text(this.numTurns);
 	$matchesLeft.text(this.numMatchesLeft);
+	this.startTimer(this);
 };
 
 Game.prototype.evaluateTurn = function() {
@@ -201,7 +196,6 @@ Game.prototype.evaluateTurn = function() {
 		this.updateDisplay('MATCH');
 		this.numMatchesLeft--;
 		$matchesLeft.text(this.numMatchesLeft);
-		//TODO: if numMatchesLeft === 0, end game!
 		if (!this.numMatchesLeft) {
 			this.updateDisplay('VICTORY');
 			this.won();
@@ -223,9 +217,15 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
-Game.prototype.startTimer = function() {
-	var id =  setInterval(this.tick, 1000, this);
-	return id;
+//TODO: Ask Sung if my solution to weird "this" behavior -- passing game around -- makes sense, or if there's a better way to do it.
+
+Game.prototype.startTimer = function(game) {
+	$('.card').removeClass('hidden');
+	$pauseBtn.text('Pause Game');
+	this.timerId = setInterval(this.tick, 1000, game);
+	$pauseBtn.one('click', { value: game }, function(event) {
+		event.data.value.pauseTimer(event.data.value);
+	});
 };
 
 Game.prototype.tick = function(game) {
@@ -234,6 +234,15 @@ Game.prototype.tick = function(game) {
 
 Game.prototype.stopTimer = function() {
 	window.clearInterval(this.timerId);
+};
+
+Game.prototype.pauseTimer = function(game) {
+	window.clearInterval(this.timerId);
+	$pauseBtn.text('Resume Game');
+	$('.card').addClass('hidden');
+	$pauseBtn.one('click', { value: game }, function(event) {
+		event.data.value.startTimer(event.data.value);
+	});
 };
 
 Game.prototype.won = function() {
@@ -287,3 +296,4 @@ $newGameBtn.on('click', function() {
 $highScoreBtn.on('click', function() {
 	$('.highscore.gallery').toggleClass('hidden');
 });
+
