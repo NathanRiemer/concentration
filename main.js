@@ -237,6 +237,7 @@ Game.prototype.updateDisplay = function(message) {
 Game.prototype.startTimer = function(game) {
 	$('.card').removeClass('hidden');
 	$pauseBtn.text('Pause Game');
+	$pauseBtn.removeClass('inactive');
 	this.timerId = setInterval(this.tick, 1000, game);
 	$pauseBtn.one('click', { value: game }, function(event) {
 		event.data.value.pauseTimer(event.data.value);
@@ -249,6 +250,9 @@ Game.prototype.tick = function(game) {
 
 Game.prototype.stopTimer = function() {
 	window.clearInterval(this.timerId);
+	$pauseBtn.text('Game Over');
+	$pauseBtn.off();
+	$pauseBtn.addClass('inactive');
 };
 
 Game.prototype.pauseTimer = function(game) {

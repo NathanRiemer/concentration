@@ -71,6 +71,11 @@
 	cursor: pointer;
 }
 
+.inactive {
+	cursor: default;
+	opacity: .5;
+}
+
 .hidden {
 	visibility: hidden;
 }
