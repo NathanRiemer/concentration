@@ -1,7 +1,6 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//High score gallery appears when you get a high score.
 //MAKE THIS THING LOOK GOOD
 	//Sizing
 	//Better MATCH/NOPE/VICTORY THING
@@ -88,7 +87,30 @@ var images = {
 		'shiba-inu.jpg',
 		'weimaraner.jpg',
 		'chihuahua.jpg'
-	]
+	], 
+	marvelSuperHeroLogos: [
+		'antman.png',
+		'avengers.jpg',
+		'black-widow.jpeg',
+		'captain-america.jpg',
+		'captain-marvel.png',
+		'daredevil.png',
+		'deadpool.jpg',
+		'fantastic-four.jpg',
+		'hawkeye.jpg',
+		'hulk.jpg',
+		'iron-fist.jpeg',
+		'iron-man.png',
+		'ms-marvel.jpg',
+		'nova.jpg',
+		'punisher.jpg',
+		'quicksilver.jpg',
+		'shield.jpg',
+		'spider-man.jpg',
+		'thor.jpg',
+		'wolverine.png',
+		'x-men.png'
+	],
 };
 
 var scoreboard = {
