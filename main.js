@@ -1,6 +1,7 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
+//High score gallery appears when you get a high score.
 //MAKE THIS THING LOOK GOOD
 	//Sizing
 	//Better MATCH/NOPE/VICTORY THING
@@ -205,6 +206,7 @@ Game.prototype.startGame = function() {
 	this.deal();
 	$turnCounter.text(this.numTurns);
 	$matchesLeft.text(this.numMatchesLeft);
+	$('li').removeClass('new');
 	this.startTimer(this);
 };
 
@@ -301,6 +303,7 @@ Game.prototype.addHighScore = function(replaceRequired, category, value) {
 		scoreboard[category][this.numPairs][1].remove();
 	}
 	var $scoreLog = $('<li>');
+	$scoreLog.addClass('new');
 	var logLine =  this.numPairs + ' Pairs: Completed in ' + value + ' ' + category;
 	$scoreLog.text(logLine);
 	$scoreLog.appendTo($('ul.'+category));
