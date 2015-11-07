@@ -1,7 +1,6 @@
 //Need to keep track of stuff for the current game, let's make that an object with a constructor
 
 //TOP PRIORITIES:
-//TIMER: PAUSE/UNPAUSE
 //MAKE THIS THING LOOK GOOD
 	//Sizing
 	//Better MATCH/NOPE/VICTORY THING
@@ -11,7 +10,6 @@
 		//Flipping!
 		//Dealing?!
 //IMAGES
-	//Fill out superHeroLogos
 	//Add new imagesets?
 		//colors?
 		//numbers?
@@ -44,7 +42,25 @@ var images = {
 		'gl.jpg',
 		'aquaman.jpg',
 		'cyborg.jpg',
-		'firestorm.jpg'
+		'firestorm.jpg',
+		'robin.png',
+		'shazam.jpg',
+		'hawkman.jpg',
+		'nightwing.png',
+		'red-tornado.jpg',
+		'booster-gold.jpg',
+		'blue-beetle.jpg',
+		'elongated-man.jpg',
+		'green-arrow.png',
+		'martian-manhunter.jpg',
+		'black-lantern.png',
+		'red-lantern.jpg',
+		'orange-lantern.png',
+		'yellow-lantern.png',
+		'blue-lantern.png',
+		'indigo-lantern.png',
+		'star-sapphire.png',
+		'white-lantern.png'
 	],
 
 	dogs: [
