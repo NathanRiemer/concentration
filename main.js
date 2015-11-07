@@ -113,7 +113,7 @@ var Game = function(numPairs) {
 		this.$div = $('<div>');
 		this.urlString = game.urlBase + game.imageArray[value] + '\')';
 		this.$div.addClass('card back sized');
-		//Could also had just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
+		//Could also have just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
 		// this.$div.text(this.value);
 	};
 
@@ -141,7 +141,6 @@ var Game = function(numPairs) {
 	};
 
 	this.Card.prototype.choose = function() {
-		// this.flip();
 		this.showFace();
 		game.turnPicks.push(this);
 		if (game.turnPicks.length > 1) {
@@ -274,11 +273,11 @@ Game.prototype.clearBoard = function() {
 };
 
 Game.prototype.checkForHighScore = function() {
-	if (scoreboard['seconds'][this.numPairs]) {
-		if (scoreboard['seconds'][this.numPairs][0] > this.seconds) {
+	if (scoreboard.seconds[this.numPairs]) {
+		if (scoreboard.seconds[this.numPairs][0] > this.seconds) {
 			this.addHighScore(true, 'seconds', this.seconds);
 		}
-		if (scoreboard['turns'][this.numPairs][0] > this.numTurns) {
+		if (scoreboard.turns[this.numPairs][0] > this.numTurns) {
 			this.addHighScore(true, 'turns', this.numTurns);
 		}
 	} else {
@@ -296,7 +295,6 @@ Game.prototype.addHighScore = function(replaceRequired, category, value) {
 	var logLine =  this.numPairs + ' Pairs: Completed in ' + value + ' ' + category;
 	$scoreLog.text(logLine);
 	$scoreLog.appendTo($('ul.'+category));
-	console.log($scoreLog);
 	scoreboard[category][this.numPairs] = [value, $scoreLog];
 };
 
