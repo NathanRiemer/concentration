@@ -34,7 +34,7 @@ var $pauseBtn = $('.button.pause');
 
 //OOOH I should look into making the range of pairs available dependent on the number of images in a given folder.
 var images = {
-	superHeroLogos: [
+	dcSuperHeroLogos: [
 		'superman.jpg',
 		'batman.jpg',
 		'wonderwoman.jpg',
@@ -106,25 +106,29 @@ var Game = function(numPairs) {
 	this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
 	this.seconds = 0;
 	this.timerId;
-	var game = this;
+	this.cardBack = this.urlBase + this.imageFolder + '.png\')';
+	// var game = this;
 
-	this.Card = function(value) {
+	this.Card = function(value, game) {
+		this.game = game;
 		this.value = value;
 		this.$div = $('<div>');
 		this.urlString = game.urlBase + game.imageArray[value] + '\')';
-		this.$div.addClass('card back sized');
+		this.$div.addClass('card sized');
+		this.showBack();
 		//Could also have just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
 		// this.$div.text(this.value);
 	};
 
-	this.Card.prototype.showFace = function() {
+	this.Card.prototype.showFront = function() {
 		this.$div.removeClass('back');
 		this.$div.css('background-image', this.urlString);
 		this.$div.addClass('front');
 	};
 
-	this.Card.prototype.hideFace = function() {
-		this.$div.css('background-image', 'none');
+	this.Card.prototype.showBack = function() {
+		this.$div.removeClass('front');
+		this.$div.css('background-image', this.game.cardBack);
 		this.$div.addClass('back');
 	};
 
@@ -141,15 +145,15 @@ var Game = function(numPairs) {
 	};
 
 	this.Card.prototype.choose = function() {
-		this.showFace();
-		game.turnPicks.push(this);
-		if (game.turnPicks.length > 1) {
-			game.evaluateTurn();
+		this.showFront();
+		this.game.turnPicks.push(this);
+		if (this.game.turnPicks.length > 1) {
+			this.game.evaluateTurn();
 		}
 	};
 
 	this.Card.prototype.reset = function() {
-		this.hideFace();
+		this.showBack();
 		this.activate();
 	};
 
@@ -158,8 +162,8 @@ var Game = function(numPairs) {
 Game.prototype.getCards = function() {
 	this.setCardDimensions();
 	for (var i=0; i < this.numPairs; i++) {
-		this.cards.push(new this.Card(i));
-		this.cards.push(new this.Card(i));
+		this.cards.push(new this.Card(i, this));
+		this.cards.push(new this.Card(i, this));
 	}
 };
 

@@ -50,6 +50,7 @@
 	font-size: 20px;
 	text-align: center;
 	color: brown;
+	background-size: 100% 100%;
 }
 
 .back:hover {
@@ -58,12 +59,12 @@
 
 .back {
 	background-color: brown;
-	background-image: none;
 	cursor: pointer;
 }
 
 .front {
-	background-size: 100% 100%;
+	border: 3px solid green;
+
 }
 
 .button {
@@ -78,4 +79,12 @@
 
 .hidden {
 	visibility: hidden;
+}
+
+.centered {
+	position: absolute;
+	top: 200px;
+	left: 30%;
+	width: 40%;
+	background-color: purple;
 }
