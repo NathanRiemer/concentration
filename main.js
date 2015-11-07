@@ -24,6 +24,8 @@ var $display = $('.display');
 var $newGameBtn = $('.new.button');
 var $timer = $('#timer');
 
+var $highScoreBtn = $('.button.highscore');
+
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
 //Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
 
@@ -280,4 +282,8 @@ $newGameBtn.on('click', function() {
 	currentGame.clearBoard();
 	currentGame = new Game($('#pair-number').val());
 	currentGame.startGame();
+});
+
+$highScoreBtn.on('click', function() {
+	$('.highscore.gallery').toggleClass('hidden');
 });
