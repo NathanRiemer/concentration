@@ -5,7 +5,8 @@
 .container {
 	height: 650px;
 	width: 650px;
-	border: 1px solid green;
+	font-family: Verdana;
+	/*border: 1px solid green;*/
 }
 
 .bar {
@@ -18,7 +19,7 @@
 }
 
 .section {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	display: block;
 	float: left;
 	width: 32%;
@@ -74,10 +75,6 @@
 	cursor: pointer;
 }
 
-.front {
-	border: 3px solid green;
-}
-
 .button {
 	border: 1px solid black;
 	cursor: pointer;
@@ -110,6 +107,10 @@
 	left: 30%;
 	width: 40%;
 	background-color: pink;
+}
+
+.gallery p {
+	display: block;
 }
 
 .new {

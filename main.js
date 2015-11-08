@@ -1,19 +1,3 @@
-//Need to keep track of stuff for the current game, let's make that an object with a constructor
-
-//TOP PRIORITIES:
-//MAKE THIS THING LOOK GOOD
-	//Sizing
-	//Better MATCH/NOPE/VICTORY THING
-	//LAYOUT AND SPACING
-		//CONSIDER UPDATING WIDTHS OF THINGS
-	//ANIMATION
-		//Flipping!
-		//Dealing?!
-//IMAGES
-	//Add new imagesets?
-		//colors?
-		//numbers?
-
 var $board = $('.board');
 
 var $turnCounter = $('#turns');
@@ -30,17 +14,9 @@ var $highscoreGallery = $('.highscore.gallery');
 var $optionsBtn = $('.button.options');
 var $optionsGallery = $('.options.gallery');
 
-var $instructionsBtn = $('.button.instructions');
-var $instructionsGallery = $('.instructions.gallery');
+var $aboutBtn = $('.button.about');
+var $aboutGallery = $('.about.gallery');
 
-//TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
-//Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
-
-		// './img/dogs/labrador-retriever.jpg',
-
-//TODO: Ask Sung if it makes sense to have this inside the Game object. In favor: the Game object makes changes to it. Against: it exists outside the scope of an individual game. Okay, I'm pretty sure it should stay outside. Hmm. Maybe it should be a separate file? Ask Sung about that. 
-
-//OOOH I should look into making the range of pairs available dependent on the number of images in a given folder.
 var images = {
 	dcSuperHeroLogos: [
 		'superman.jpg',
@@ -138,7 +114,6 @@ var Game = function(numPairs) {
 	this.seconds = 0;
 	this.timerId;
 	this.cardBack = this.urlBase + this.imageFolder + '.png\')';
-	// var game = this;
 
 	this.Card = function(value, game) {
 		this.game = game;
@@ -147,14 +122,11 @@ var Game = function(numPairs) {
 		this.urlString = game.urlBase + game.imageArray[value] + '\')';
 		this.$div.addClass('card sized');
 		this.showBack();
-		//Could also have just numbers as an option, would require some changes unless I use pictures of numbers which seems silly.
-		// this.$div.text(this.value);
 	};
 
 	this.Card.prototype.showFront = function() {
 		this.$div.removeClass('back');
 		this.$div.css('background-image', this.urlString);
-		// this.$div.addClass('front');
 	};
 
 	this.Card.prototype.showBack = function() {
@@ -273,8 +245,6 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
-//TODO: Ask Sung if my solution to weird "this" behavior -- passing game around -- makes sense, or if there's a better way to do it.
-
 Game.prototype.startTimer = function(game) {
 	$('.card').removeClass('hidden');
 	$pauseBtn.text('Pause Game');
@@ -358,16 +328,22 @@ $newGameBtn.on('click', function() {
 
 $highScoreBtn.on('click', function() {
 	$highscoreGallery.toggleClass('hidden');
+	$optionsGallery.addClass('hidden');
+	$aboutGallery.addClass('hidden');
 });
 
 $optionsBtn.on('click', function() {
 	$optionsGallery.toggleClass('hidden');
+	$highscoreGallery.addClass('hidden');
+	$aboutGallery.addClass('hidden');
 });
 
-$highscoreGallery.on('click', function() {
+$aboutBtn.on('click', function() {
+	$aboutGallery.toggleClass('hidden');
+	$optionsGallery.addClass('hidden');
 	$highscoreGallery.addClass('hidden');
 });
 
-$instructionsBtn.on('click', function() {
-	$instructionsGallery.toggleClass('hidden');
-})
+$('.gallery.about, .gallery.highscore').on('click', function() {
+	$('.gallery').addClass('hidden');
+});
