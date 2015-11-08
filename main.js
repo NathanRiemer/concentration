@@ -14,8 +14,8 @@ var $highscoreGallery = $('.highscore.gallery');
 var $optionsBtn = $('.button.options');
 var $optionsGallery = $('.options.gallery');
 
-var $instructionsBtn = $('.button.instructions');
-var $instructionsGallery = $('.instructions.gallery');
+var $aboutBtn = $('.button.about');
+var $aboutGallery = $('.about.gallery');
 
 var images = {
 	dcSuperHeroLogos: [
@@ -326,18 +326,24 @@ $newGameBtn.on('click', function() {
 	$('.gallery').addClass('hidden');
 });
 
-$highScoreBtn.on('click', function() {
+$highScoreBtn.on('click', function(event) {
 	$highscoreGallery.toggleClass('hidden');
+	$optionsGallery.addClass('hidden');
+	$aboutGallery.addClass('hidden');
 });
 
 $optionsBtn.on('click', function() {
 	$optionsGallery.toggleClass('hidden');
+	$highscoreGallery.addClass('hidden');
+	$aboutGallery.addClass('hidden');
+});
+
+$aboutBtn.on('click', function() {
+	$aboutGallery.toggleClass('hidden');
+	$optionsGallery.addClass('hidden');
+	$highscoreGallery.addClass('hidden');
 });
 
 $highscoreGallery.on('click', function() {
 	$highscoreGallery.addClass('hidden');
-});
-
-$instructionsBtn.on('click', function() {
-	$instructionsGallery.toggleClass('hidden');
 });

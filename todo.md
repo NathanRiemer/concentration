@@ -4,6 +4,7 @@
 -  [] Image files
   -  [] Resize files
   -  [] Optimize for squareness
+  -  [] Determine if any of the images are too close in appearance
 -  [] Improve general appearance
   -  [] Borders
   -  [] Coloring
@@ -12,13 +13,20 @@
   -  [] Font
   -  [] Layout
 -  [] Animation?
+-  [] Improve gallery:
+  -  [] Add x (close) button to gallery
+  -  [] Improve positioning
+  -  [] Improve new score highlighting
 
 ## Content
 -  [] Add landing page (probably just expand instructions)
 
 ## Behavior
 -  [] Display high scores in order of number of pairs?
--  [] Could the number of pairs available depend on the category input? 
+-  [] Could the number of pairs available depend on the category input?
+-  [] Is the delay after an incorrect pair the right length? Do I need to do more to prevent people from having multiple pairs of cards turned over at once? 
+-  [x] Clicking the buttons in the action bar automatically hides any other action bar galleries (to prevent things not appearing due to being underneath another thing)
+-  [] Dry up those event listeners for the action buttons!
 
 ## Backstage Code improvements
 -  [] Wrap pertinent code in document ready function
@@ -29,11 +37,12 @@
 -  [] Passing the calling object using this to another class' method -- kosher? (see Game.prototype.startTimer for an example)
 -  [] Thoughts about the program's complexity? I did my best to separate out objects and methods in a way that makes sense. The code has gotten long-ish, but I think that's okay considering all the functionality. 
 -  [] Copyright issue?
+-  [] Better way to do timer?
 
 ## Project Requirements
 -- [x] Add link to playable app
 -- [] Make sure to merge gh-pages branch up to master before final submission deadline!
--- [] Write description of app
+-- [x] Write description of app
 -- [] Style 
   --  [] Update file names to use snake_case
   --  [] Make sure other things are named appropriately
