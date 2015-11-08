@@ -326,7 +326,7 @@ $newGameBtn.on('click', function() {
 	$('.gallery').addClass('hidden');
 });
 
-$highScoreBtn.on('click', function(event) {
+$highScoreBtn.on('click', function() {
 	$highscoreGallery.toggleClass('hidden');
 	$optionsGallery.addClass('hidden');
 	$aboutGallery.addClass('hidden');
@@ -344,6 +344,6 @@ $aboutBtn.on('click', function() {
 	$highscoreGallery.addClass('hidden');
 });
 
-$highscoreGallery.on('click', function() {
-	$highscoreGallery.addClass('hidden');
+$('.gallery.about, .gallery.highscore').on('click', function() {
+	$('.gallery').addClass('hidden');
 });

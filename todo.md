@@ -10,7 +10,7 @@
   -  [] Coloring
   -  [] Size
   -  [] Position
-  -  [] Font
+  -  [x] Font
   -  [] Layout
 -  [] Animation?
 -  [] Improve gallery:
@@ -19,7 +19,7 @@
   -  [] Improve new score highlighting
 
 ## Content
--  [] Add landing page (probably just expand instructions)
+-  [x] Add landing page (probably just expand instructions)
 
 ## Behavior
 -  [] Display high scores in order of number of pairs?
