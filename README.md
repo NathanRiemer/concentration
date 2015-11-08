@@ -75,3 +75,5 @@ Game.prototype.setCardDimensions = function() {
 ##Description of app:
 
 ##Link to playable app:
+[Playable App](http://nathanriemer.github.io/concentration/)
+
