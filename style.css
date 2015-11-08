@@ -74,10 +74,6 @@
 	cursor: pointer;
 }
 
-.front {
-	border: 3px solid green;
-}
-
 .button {
 	border: 1px solid black;
 	cursor: pointer;
