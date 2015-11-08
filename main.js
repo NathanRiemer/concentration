@@ -19,13 +19,19 @@ var $board = $('.board');
 var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
 var $display = $('.display');
-var $newGameBtn = $('.new.button');
+var $newGameBtn = $('.new-game.button');
 var $timer = $('#timer');
 
 var $highScoreBtn = $('.button.highscore');
 var $pauseBtn = $('.button.pause');
 
 var $highscoreGallery = $('.highscore.gallery');
+
+var $optionsBtn = $('.button.options');
+var $optionsGallery = $('.options.gallery');
+
+var $instructionsBtn = $('.button.instructions');
+var $instructionsGallery = $('.instructions.gallery');
 
 //TO ASK SUNG: Is it possible to use JS to access the files in a directory instead of manually listing them all? That'd be cool. Can't find anything online.
 //Also if that's not possible I should get rid of the ./img/FOLDER and just add that when I build the url string. Or add the url() part to the arrays, so I don't need to build the string.
@@ -345,12 +351,21 @@ $newGameBtn.on('click', function() {
 	currentGame.clearBoard();
 	currentGame = new Game($('#pair-number').val());
 	currentGame.startGame();
+	$('.gallery').addClass('hidden');
 });
 
 $highScoreBtn.on('click', function() {
 	$highscoreGallery.toggleClass('hidden');
 });
 
+$optionsBtn.on('click', function() {
+	$optionsGallery.toggleClass('hidden');
+});
+
 $highscoreGallery.on('click', function() {
 	$highscoreGallery.addClass('hidden');
 });
+
+$instructionsBtn.on('click', function() {
+	$instructionsGallery.toggleClass('hidden');
+})

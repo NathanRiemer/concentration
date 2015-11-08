@@ -8,34 +8,44 @@
 <body>
 	<div class="container">
 		<div class="info bar">
-			<label for="#turns">Turns:</label>
-			<p id="turns"></p>
-			<div class="display">MATCH</div>
-			<label for="#matches-left">Matches Remaining:</label>
-			<p id="matches-left"></p>
-			<label for="timer">Seconds:</label>
-			<p id="timer">0</p>
-			<div class="pause button">Pause Game</div>
+			<div class="section numbers">
+				<label for="#turns">Turns:</label>
+				<p id="turns"></p>
+				<label for="#matches-left">Matches Remaining:</label>
+				<p id="matches-left"></p>
+			</div> <!--.section.numbers-->
+			<div class="section display">MATCH</div>
+			<div class="section time">
+				<label for="timer">Seconds:</label>
+				<p id="timer">0</p>
+				<div class="pause button">Pause Game</div>
+			</div> <!--.section.time-->
 		</div> <!--.info.bar-->
 		<div class="board">
 		</div> <!--.board-->
 		<div class="action bar">
-			<div class="new button">New Game</div>
-			<label for="#pair-number">Select number of pairs:</label>
-			<input id="pair-number" type="number" min=1 max=21 value=6>
-			<select>
-				<option value="dcSuperHeroLogos">DC Super Hero Logos</option>
-				<option value="marvelSuperHeroLogos">Marvel Super Hero Logos</option>
-				<option value="dogs">Dogs</option>
-			</select>
+			<div class="new-game button">New Game</div>
+			<div class="options button">Options</div>
+			<div class="options gallery hidden">
+				<label for="#pair-number">Select number of pairs:</label>
+				<input id="pair-number" type="number" min=1 max=21 value=6>
+				<select>
+					<option value="dcSuperHeroLogos">DC Super Hero Logos</option>
+					<option value="marvelSuperHeroLogos">Marvel Super Hero Logos</option>
+					<option value="dogs">Dogs</option>
+				</select>
+			</div> <!--.options-->
+			<div class="instructions button">Instructions</div>
+			<div class="instructions gallery hidden">
+				<p>Concentrate!</p>
+			</div> <!--.instructions.gallery.hidden-->
 			<div class="highscore button">High Scores</div>
 		</div> <!--.action.bar-->
-		<div class="highscore gallery hidden centered">
+		<div class="highscore gallery hidden">
 			<ul class="highscore turns list">High Score (Fewest Turns):
 			</ul>
 			<ul class="highscore seconds list">High Score (Fastest):
 			</ul>
-
 		</div> <!--.highscore.gallery-->
 	</div> <!--.container-->
 	<script type="text/javascript" src="main.js"></script>

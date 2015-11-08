@@ -5,16 +5,27 @@
 .container {
 	height: 650px;
 	width: 650px;
+	border: 1px solid green;
 }
 
 .bar {
 	background-color: lightgrey;
 	border: 2px solid grey;
+	height: 50px;
+	width: 600px;
+	margin: 0 auto;
+
+}
+
+.section {
+	border: 1px solid red;
 }
 
 .bar p,
 .bar label,
-.bar div {
+.bar div,
+.bar input, 
+.bar select {
 	display: inline;
 }
 
@@ -39,6 +50,8 @@
 	height: 600px;
 	width: 600px;
 	margin: 0 auto;
+	border: 1px solid purple;
+	background-color: blanchedalmond;
 }
 
 .card {
@@ -46,15 +59,12 @@
 	width: 65px;*/
 	float: left;
 	margin: 7px;
-	border: 3px solid white;
-	font-size: 20px;
-	text-align: center;
-	color: brown;
+	border: 3px solid blanchedalmond;
 	background-size: 100% 100%;
 }
 
 .back:hover {
-	border: 3px solid yellow;
+	border: 3px solid black;
 }
 
 .back {
@@ -69,6 +79,9 @@
 .button {
 	border: 1px solid black;
 	cursor: pointer;
+	background-color: green;
+	color: white;
+	border-radius: 5px;
 }
 
 .inactive {
@@ -80,12 +93,12 @@
 	visibility: hidden;
 }
 
-.centered {
+.gallery {
 	position: absolute;
 	top: 200px;
 	left: 30%;
 	width: 40%;
-	background-color: purple;
+	background-color: pink;
 }
 
 .new {
