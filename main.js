@@ -267,7 +267,7 @@ Game.prototype.evaluateTurn = function() {
 
 Game.prototype.updateDisplay = function(message) {
 	$display.text(message);
-	message = message.toLowerCase() + ' display';
+	message = message.toLowerCase() + ' display section';
 	$display.attr('class', message);
 };
 
