@@ -27,10 +27,10 @@
 
 ##Front-End Wireframes:
 ![Image of Wireframe-Page]
-(./img/wireframe-page.jpg =400x)
+(./img/wireframe-page.jpg =448x797)
 
 ![Image of Wireframe-Bars]
-(./img/wireframe-bars.jpg =400x)
+(./img/wireframe-bars.jpg =797x448)
 
 ##List of technologies used:
 -  HTML
