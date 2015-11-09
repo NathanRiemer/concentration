@@ -16,7 +16,7 @@
 -  [] Improve gallery:
   -  [x] Add x (close) button to gallery
   -  [x] Improve positioning
-  -  [] Improve new score highlighting
+  -  [x] Improve new score highlighting
 
 ## Content
 -  [x] Add landing page (probably just expand instructions)

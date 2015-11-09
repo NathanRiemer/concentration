@@ -84,6 +84,7 @@
 	height: 70%;
 	margin: 5px 3% 0 3%;
 	display: inline-block;
+	float: left;
 }
 
 .inactive {
