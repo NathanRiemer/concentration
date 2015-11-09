@@ -1,7 +1,3 @@
-/** {
-	border: 1px solid green;
-}*/
-
 .container {
 	min-height: 650px;
 	min-width: 650px;
@@ -19,8 +15,8 @@
 .section {
 	display: block;
 	float: left;
-	width: 32%;
-	margin: 4px;
+	width: 29%;
+	margin: 4px 2% 4px 2%;
 	height: 80%;
 }
 
@@ -31,6 +27,7 @@
 .display {
 	color: white;
 	text-align: center;
+	font-size: 30px;
 }
 
 .match {
@@ -84,11 +81,8 @@
 .action .button {
 	width: 18%;
 	height: 70%;
-	/*margin: 10px;*/
-	margin-right: 3%;
-	margin-left: 3%;
-	margin-top: 5px;
-	float: left;
+	margin: 5px 3% 0 3%;
+	display: inline-block;
 }
 
 .inactive {
@@ -102,9 +96,9 @@
 
 .gallery {
 	position: absolute;
-	top: 15%;
-	left: 20%;
-	width: 40%;
+	top: 10%;
+	left: 25%;
+	width: 50%;
 	background-color: #CF464D;
 	padding: 20px;
 	border: 1px solid black;
