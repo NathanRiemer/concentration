@@ -22,7 +22,6 @@ var scoreboard = {
 	seconds: {}
 };
 
-
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
 	this.numTurns = 0;
@@ -37,58 +36,15 @@ var Game = function(numPairs) {
 	this.timerId;
 	this.cardBack = this.urlBase + this.imageFolder + '.png\')';
 
-	this.Card = function(value, game) {
-		this.game = game;
-		this.value = value;
-		this.$div = $('<div>');
-		this.urlString = game.urlBase + game.imageArray[value] + '\')';
-		this.$div.addClass('card sized');
-		this.showBack();
-	};
 
-	this.Card.prototype.showFront = function() {
-		this.$div.removeClass('back');
-		this.$div.css('background-image', this.urlString);
-	};
-
-	this.Card.prototype.showBack = function() {
-		this.$div.removeClass('front');
-		this.$div.css('background-image', this.game.cardBack);
-		this.$div.addClass('back');
-	};
-
-	this.Card.prototype.place = function() {
-		$board.append(this.$div);
-		this.activate();
-	};
-
-	this.Card.prototype.activate = function() {
-		var card = this;
-		this.$div.one('click', function() {
-			card.choose();
-		});
-	};
-
-	this.Card.prototype.choose = function() {
-		this.showFront();
-		this.game.turnPicks.push(this);
-		if (this.game.turnPicks.length > 1) {
-			this.game.evaluateTurn();
-		}
-	};
-
-	this.Card.prototype.reset = function() {
-		this.showBack();
-		this.activate();
-	};
 
 }; //end of Game constructor
 
 Game.prototype.getCards = function() {
 	this.setCardDimensions();
 	for (var i = 0; i < this.numPairs; i++) {
-		this.cards.push(new this.Card(i, this));
-		this.cards.push(new this.Card(i, this));
+		this.cards.push(new Card(i, this));
+		this.cards.push(new Card(i, this));
 	}
 };
 
@@ -247,6 +203,55 @@ Game.prototype.addHighScore = function(replaceRequired, category, value) {
 	scoreboard[category][this.numPairs] = [value, $scoreLog];
 	$highscoreGallery.removeClass('hidden');
 };
+
+
+var Card = function(value, game) {
+	this.game = game;
+	this.value = value;
+	this.$div = $('<div>');
+	this.urlString = game.urlBase + game.imageArray[value] + '\')';
+	this.$div.addClass('card sized');
+	this.showBack();
+};
+
+Card.prototype.showFront = function() {
+	this.$div.removeClass('back');
+	this.$div.css('background-image', this.urlString);
+};
+
+Card.prototype.showBack = function() {
+	this.$div.removeClass('front');
+	this.$div.css('background-image', this.game.cardBack);
+	this.$div.addClass('back');
+};
+
+Card.prototype.place = function() {
+	$board.append(this.$div);
+	this.activate();
+};
+
+Card.prototype.activate = function() {
+	var card = this;
+	this.$div.one('click', function() {
+		card.choose();
+	});
+};
+
+Card.prototype.choose = function() {
+	this.showFront();
+	this.game.turnPicks.push(this);
+	if (this.game.turnPicks.length > 1) {
+		this.game.evaluateTurn();
+	}
+};
+
+Card.prototype.reset = function() {
+	this.showBack();
+	this.activate();
+};
+
+
+
 
 var currentGame = new Game(6);
 currentGame.startGame();
