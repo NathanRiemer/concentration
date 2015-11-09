@@ -172,20 +172,33 @@ Game.prototype.getCards = function() {
 
 Game.prototype.setCardDimensions = function() {
 	var dimension;
-	if (this.numPairs < 5) {
-		dimension = '150px';
-	} else if (this.numPairs < 9) {
-		dimension = '120px';
-	} else if (this.numPairs < 13) {
-		dimension = '100px';
-	} else if (this.numPairs < 19) {
-		dimension = '80px';
-	} else {
-		dimension = '65px';
-	}
+	// if (this.numPairs < 5) {
+	// 	// dimension = '150px';
+	// 	// dimension = '25%';
+	// 	dimension = $board.width() * .25;
+	// } else if (this.numPairs < 9) {
+	// 	// dimension = '120px';
+	// 	// dimension = '20%'
+	// 	dimension = $board.width() * .20;
+	// } else if (this.numPairs < 13) {
+	// 	// dimension = '100px';
+	// 	dimension = '16%';
+	// } else if (this.numPairs < 19) {
+	// 	// dimension = '80px';
+	// 	dimension = '13%';
+	// } else {
+	// 	// dimension = '65px';
+	// 	dimension = '11%';
+	// }
+
+	dimension = Math.sqrt(($board.width() * $board.height()) / (this.numPairs * 2));
+
+	dimension *= .72;
+	console.log(dimension);
 
 	var $style = $('<style type="text/css">').appendTo('head');
-	var css = '.sized { height: ' + dimension + '; width: ' + dimension + ';}';
+	// var css = '.sized { height: ' + dimension + '; width: ' + dimension + ';}';
+	var css = '.sized { height: ' + dimension + 'px; width: ' + dimension + 'px;}';
 	$style.html(css);
 };
 

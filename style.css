@@ -3,17 +3,17 @@
 }*/
 
 .container {
-	height: 650px;
-	width: 650px;
+	min-height: 650px;
+	min-width: 650px;
 	font-family: Verdana;
-	/*border: 1px solid green;*/
+	border: 1px solid green;
 }
 
 .bar {
 	background-color: lightgrey;
 	border: 2px solid grey;
 	height: 50px;
-	width: 600px;
+	width: 95%;
 	margin: 0 auto;
 
 }
@@ -49,11 +49,12 @@
 }
 
 .board {
-	height: 600px;
-	width: 600px;
+	min-height: 600px;
+	width: 95%;
 	margin: 0 auto;
 	border: 1px solid purple;
 	background-color: blanchedalmond;
+	display: block;
 }
 
 .card {
