@@ -6,8 +6,8 @@
   -  [] Optimize for squareness
   -  [] Determine if any of the images are too close in appearance
 -  [] Improve general appearance
-  -  [] Borders
-  -  [] Coloring
+  -  [x] Borders
+  -  [x] Coloring
   -  [] Size
   -  [] Position
   -  [x] Font

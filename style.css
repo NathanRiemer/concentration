@@ -6,20 +6,17 @@
 	min-height: 650px;
 	min-width: 650px;
 	font-family: Verdana;
-	border: 1px solid green;
 }
 
 .bar {
-	background-color: lightgrey;
-	border: 2px solid grey;
+	background-color: #2C827C;
+	border: 2px solid #1D3749;
 	height: 50px;
 	width: 95%;
 	margin: 0 auto;
-
 }
 
 .section {
-	/*border: 1px solid red;*/
 	display: block;
 	float: left;
 	width: 32%;
@@ -52,23 +49,18 @@
 	min-height: 600px;
 	width: 95%;
 	margin: 0 auto;
-	border: 1px solid purple;
-	background-color: blanchedalmond;
+	background-color: #45AD3A;
 	display: block;
 }
 
 .card {
-/*	height: 65px;
-	width: 65px;*/
-	/*float: left;*/
 	display: inline-block;
 	margin: 7px;
-	border: 3px solid blanchedalmond;
+	border: 3px solid #45AD3A;
 	background-size: 100% 100%;
 }
 
-.back:hover, 
-.button:hover {
+.back:hover {
 	border: 3px solid black;
 }
 
@@ -78,14 +70,17 @@
 }
 
 .button {
-	border: 1px solid black;
+	border: 2px solid #D38447;
 	cursor: pointer;
-	background-color: green;
+	background-color: #D38447;
 	color: white;
 	border-radius: 5px;
 	text-align: center;
 }
 
+.button:hover {
+	border: 2px solid #8F450D;
+}
 .action .button {
 	width: 20%;
 	float: left;
@@ -107,7 +102,7 @@
 	top: 15%;
 	left: 20%;
 	width: 40%;
-	background-color: pink;
+	background-color: #CF464D;
 	padding: 20px;
 	border: 1px solid black;
 }
@@ -124,6 +119,7 @@
 
 .new {
 	background-color: yellow;
+	border-radius: 3px;
 }
 
 .gallery .button {
