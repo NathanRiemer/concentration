@@ -4,6 +4,7 @@
 		<title>CONCENTRATION</title>
 		<script type="text/javascript" src="jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="animate.css">
 	</head>
 	<body>
 		<div class="container">
@@ -31,13 +32,19 @@
 				<div class="new-game button">New Game</div>
 				<div class="options button">Options</div>
 				<div class="options gallery hidden">
-					<label for="#pair-number">Select number of pairs:</label>
-					<input id="pair-number" type="number" min=1 max=21 value=6>
-					<select>
-						<option value="dcSuperHeroLogos">DC Super Hero Logos</option>
-						<option value="marvelSuperHeroLogos">Marvel Super Hero Logos</option>
-						<option value="dogs">Dogs</option>
-					</select>
+					<div>
+						<label for="#pair-number">Select number of pairs:</label>
+						<input id="pair-number" type="number" min=1 max=21 value=6>
+					</div>
+					<div>
+						<label>Select content</label>
+						<select>
+							<option value="dcSuperHeroLogos">DC Super Hero Logos</option>
+							<option value="marvelSuperHeroLogos">Marvel Super Hero Logos</option>
+							<option value="dogs">Dogs</option>
+						</select>
+					</div>
+					<div class="new-game button">New Game</div>
 				</div> <!--.options-->
 				<div class="about button">About</div>
 				<div class="about gallery">
@@ -58,6 +65,7 @@
 				</ul>
 			</div> <!--.highscore.gallery-->
 		</div> <!--.container-->
+		<script type="text/javascript" src="image_directory.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
