@@ -164,7 +164,7 @@ var Game = function(numPairs) {
 
 Game.prototype.getCards = function() {
 	this.setCardDimensions();
-	for (var i=0; i < this.numPairs; i++) {
+	for (var i = 0; i < this.numPairs; i++) {
 		this.cards.push(new this.Card(i, this));
 		this.cards.push(new this.Card(i, this));
 	}
@@ -192,12 +192,8 @@ Game.prototype.setCardDimensions = function() {
 	// }
 
 	dimension = Math.sqrt(($board.width() * $board.height()) / (this.numPairs * 2));
-
 	dimension *= .72;
-	console.log(dimension);
-
 	var $style = $('<style type="text/css">').appendTo('head');
-	// var css = '.sized { height: ' + dimension + '; width: ' + dimension + ';}';
 	var css = '.sized { height: ' + dimension + 'px; width: ' + dimension + 'px;}';
 	$style.html(css);
 };
@@ -263,9 +259,9 @@ Game.prototype.startTimer = function(game) {
 	$pauseBtn.text('Pause Game');
 	$pauseBtn.removeClass('inactive');
 	this.timerId = setInterval(this.tick, 1000, game);
-	$pauseBtn.one('click', { value: game }, function(event) {
-		event.data.value.pauseTimer(event.data.value);
-	});
+	$pauseBtn.one('click', function(event) {
+		this.pauseTimer(this);
+	}.bind(this));
 };
 
 Game.prototype.tick = function(game) {
@@ -306,6 +302,7 @@ Game.prototype.checkForHighScore = function() {
 		if (scoreboard.seconds[this.numPairs][0] > this.seconds) {
 			this.addHighScore(true, 'seconds', this.seconds);
 		}
+
 		if (scoreboard.turns[this.numPairs][0] > this.numTurns) {
 			this.addHighScore(true, 'turns', this.numTurns);
 		}
@@ -313,13 +310,13 @@ Game.prototype.checkForHighScore = function() {
 		this.addHighScore(false, 'turns', this.numTurns);
 		this.addHighScore(false, 'seconds', this.seconds);
 	}
-
 };
 
 Game.prototype.addHighScore = function(replaceRequired, category, value) {
 	if (replaceRequired) {
 		scoreboard[category][this.numPairs][1].remove();
 	}
+
 	var $scoreLog = $('<li>');
 	$scoreLog.addClass('new');
 	var logLine =  this.numPairs + ' Pairs: Completed in ' + value + ' ' + category;
@@ -360,6 +357,13 @@ $aboutBtn.on('click', function() {
 $('.gallery.about, .gallery.highscore').on('click', function() {
 	$('.gallery').addClass('hidden');
 });
+
+
+//Need to move inside Game
+// $(window).resize(function() {
+// 	$('style').remove();
+// 	currentGame.setCardDimensions();
+// });
 
 // var clickOutside = function(activeGallery) {
 // 	activeGallery.addClass('hidden');
