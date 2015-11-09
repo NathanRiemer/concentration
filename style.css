@@ -28,6 +28,7 @@
 	color: white;
 	text-align: center;
 	font-size: 30px;
+	border-radius: 50%;
 }
 
 .match {
@@ -97,8 +98,9 @@
 .gallery {
 	position: absolute;
 	top: 10%;
-	left: 25%;
-	width: 50%;
+	/*left: 25%;*/
+	margin: 0 25%;
+	max-width: 50%;
 	background-color: #CF464D;
 	padding: 20px;
 	border: 1px solid black;
@@ -121,11 +123,20 @@
 
 .gallery .button {
 	float: none;
+	margin: 5px 35%;
+	width: 30%;
 }
 
 .closer {
 	position: absolute;
 	top: 2px;
 	left: 4px;
-	display: block;
+}
+
+.highscore.list {
+	font-weight: bold;
+}
+
+li {
+	font-weight: normal;
 }
