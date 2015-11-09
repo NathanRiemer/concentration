@@ -262,42 +262,9 @@ $aboutBtn.on('click', function() {
 	$highscoreGallery.addClass('hidden');
 });
 
-$('.gallery.about, .gallery.highscore').on('click', function() {
+$('.closer').on('click', function() {
 	$('.gallery').addClass('hidden');
 });
-
-// var showGallery = function(btn, targetGallery, otherGalleries) {
-// 	targetGallery.removeClass('hidden');
-// 	otherGalleries.forEach(function(gallery){
-// 		gallery.addClass('hidden');
-// 	});
-// 	currentGame.pauseTimer();
-// 	$board.one('click', function() {
-// 		hideGallery(btn, targetGallery, otherGalleries);
-// 	});
-// 	btn.one('click', function() {
-// 		hideGallery(btn, targetGallery, otherGalleries);
-// 	});
-// };
-
-// var hideGallery = function(btn, targetGallery, otherGalleries) {
-// 	$board.off();
-// 	btn.off();
-// 	targetGallery.addClass('hidden');
-// 	currentGame.startTimer();
-// 	actionButton(btn, targetGallery, otherGalleries);
-// };
-
-// var actionButton = function(btn, targetGallery, otherGalleries) {
-// 	btn.one('click', function() {
-// 		showGallery(btn, targetGallery, otherGalleries);
-// 	});
-// };
-
-// actionButton($highScoreBtn, $highscoreGallery, [$optionsGallery, $aboutGallery]);
-// actionButton($aboutBtn, $aboutGallery, [$optionsGallery, $highscoreGallery]);
-// actionButton($optionsBtn, $optionsGallery, [$highscoreGallery, $aboutGallery]);
-
 
 $(window).resize(function() {
 	$('style').remove();

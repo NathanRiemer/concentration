@@ -14,7 +14,7 @@
   -  [x] Layout
 -  [x] Animation?
 -  [] Improve gallery:
-  -  [] Add x (close) button to gallery
+  -  [x] Add x (close) button to gallery
   -  [x] Improve positioning
   -  [] Improve new score highlighting
 
