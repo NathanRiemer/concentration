@@ -8,14 +8,14 @@
 -  [] Improve general appearance
   -  [x] Borders
   -  [x] Coloring
-  -  [] Size
-  -  [] Position
+  -  [x] Size
+  -  [x] Position
   -  [x] Font
   -  [x] Layout
 -  [x] Animation?
 -  [] Improve gallery:
   -  [] Add x (close) button to gallery
-  -  [] Improve positioning
+  -  [x] Improve positioning
   -  [] Improve new score highlighting
 
 ## Content

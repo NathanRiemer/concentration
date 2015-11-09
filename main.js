@@ -22,13 +22,13 @@ var scoreboard = {
 };
 
 // Game object constructor and methods //
-var Game = function(numPairs) {
+var Game = function(numPairs, imageFolder) {
 	this.numPairs = numPairs;
 	this.numTurns = 0;
 	this.cards = [];
 	this.numMatchesLeft = numPairs;
 	this.turnPicks = [];
-	this.imageFolder = $('select').val();
+	this.imageFolder = imageFolder;
 	this.imageArray = images[this.imageFolder];
 	this.shuffle(this.imageArray);
 	this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
@@ -234,12 +234,12 @@ Card.prototype.reset = function() {
 
 //Getting down to business
 
-var currentGame = new Game(6);
+var currentGame = new Game(6, 'dcSuperHeroLogos');
 currentGame.startGame();
 
 $newGameBtn.on('click', function() {
 	currentGame.clearBoard();
-	currentGame = new Game($('#pair-number').val());
+	currentGame = new Game($('#pair-number').val(), $('select').val());
 	currentGame.startGame();
 	$('.gallery').addClass('hidden');
 });
@@ -270,14 +270,3 @@ $(window).resize(function() {
 	$('style').remove();
 	currentGame.setCardDimensions();
 });
-
-// var clickOutside = function(activeGallery) {
-// 	activeGallery.addClass('hidden');
-// };
-
-// $aboutBtn.one('click', function() {
-// 	$aboutGallery.removeClass('hidden');
-// 	$(window).one('click', function() {
-// 		clickOutside($aboutGallery);
-// 	});
-// });
