@@ -27,7 +27,7 @@
 -  [x] Is the delay after an incorrect pair the right length? Do I need to do more to prevent people from having multiple pairs of cards turned over at once? (I think this is okay as-is)
 -  [x] Clicking the buttons in the action bar automatically hides any other action bar galleries (to prevent things not appearing due to being underneath another thing)
 -  [] Dry up those event listeners for the action buttons!
--  [] Cards resize to accomodate resized board at new game.
+-  [x] Cards resize to accomodate resized board at new game.
 
 ## Backstage Code improvements
 -  [] Wrap pertinent code in document ready function

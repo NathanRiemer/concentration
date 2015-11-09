@@ -35,9 +35,6 @@ var Game = function(numPairs) {
 	this.seconds = 0;
 	this.timerId;
 	this.cardBack = this.urlBase + this.imageFolder + '.png\')';
-
-
-
 }; //end of Game constructor
 
 Game.prototype.getCards = function() {
@@ -50,27 +47,7 @@ Game.prototype.getCards = function() {
 
 Game.prototype.setCardDimensions = function() {
 	var dimension;
-	// if (this.numPairs < 5) {
-	// 	// dimension = '150px';
-	// 	// dimension = '25%';
-	// 	dimension = $board.width() * .25;
-	// } else if (this.numPairs < 9) {
-	// 	// dimension = '120px';
-	// 	// dimension = '20%'
-	// 	dimension = $board.width() * .20;
-	// } else if (this.numPairs < 13) {
-	// 	// dimension = '100px';
-	// 	dimension = '16%';
-	// } else if (this.numPairs < 19) {
-	// 	// dimension = '80px';
-	// 	dimension = '13%';
-	// } else {
-	// 	// dimension = '65px';
-	// 	dimension = '11%';
-	// }
-
-	dimension = Math.sqrt(($board.width() * $board.height()) / (this.numPairs * 2));
-	dimension *= .72;
+	dimension = Math.sqrt(($board.width() * $board.height()) / (this.numPairs * 2)) * 0.72;
 	var $style = $('<style type="text/css">').appendTo('head');
 	var css = '.sized { height: ' + dimension + 'px; width: ' + dimension + 'px;}';
 	$style.html(css);
@@ -99,7 +76,7 @@ Game.prototype.startGame = function() {
 	$matchesLeft.text(this.numMatchesLeft);
 	$('li').removeClass('new');
 	$highscoreGallery.addClass('hidden');
-	this.startTimer(this);
+	this.startTimer();
 };
 
 Game.prototype.evaluateTurn = function() {
@@ -132,13 +109,13 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
-Game.prototype.startTimer = function(game) {
+Game.prototype.startTimer = function() {
 	$('.card').removeClass('hidden');
 	$pauseBtn.text('Pause Game');
 	$pauseBtn.removeClass('inactive');
-	this.timerId = setInterval(this.tick, 1000, game);
+	this.timerId = setInterval(this.tick, 1000, this);
 	$pauseBtn.one('click', function(event) {
-		this.pauseTimer(this);
+		this.pauseTimer();
 	}.bind(this));
 };
 
@@ -153,13 +130,13 @@ Game.prototype.stopTimer = function() {
 	$pauseBtn.addClass('inactive');
 };
 
-Game.prototype.pauseTimer = function(game) {
+Game.prototype.pauseTimer = function() {
 	window.clearInterval(this.timerId);
 	$pauseBtn.text('Resume Game');
 	$('.card').addClass('hidden');
-	$pauseBtn.one('click', { value: game }, function(event) {
-		event.data.value.startTimer(event.data.value);
-	});
+	$pauseBtn.one('click', function(event) {
+		this.startTimer();
+	}.bind(this));
 };
 
 Game.prototype.won = function() {
