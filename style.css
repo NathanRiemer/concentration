@@ -89,7 +89,6 @@
 	float: left;
 	height: 70%;
 	margin: 10px;
-
 }
 
 .inactive {
@@ -108,6 +107,7 @@
 	width: 40%;
 	background-color: pink;
 	padding: 20px;
+	border: 1px solid black;
 }
 
 .gallery p {
@@ -122,4 +122,8 @@
 
 .new {
 	background-color: yellow;
+}
+
+.gallery .button {
+	float: none;
 }

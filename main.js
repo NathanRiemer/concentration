@@ -347,3 +347,14 @@ $aboutBtn.on('click', function() {
 $('.gallery.about, .gallery.highscore').on('click', function() {
 	$('.gallery').addClass('hidden');
 });
+
+// var clickOutside = function(activeGallery) {
+// 	activeGallery.addClass('hidden');
+// };
+
+// $aboutBtn.one('click', function() {
+// 	$aboutGallery.removeClass('hidden');
+// 	$(window).one('click', function() {
+// 		clickOutside($aboutGallery);
+// 	});
+// });

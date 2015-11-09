@@ -38,6 +38,7 @@
 -  [] Thoughts about the program's complexity? I did my best to separate out objects and methods in a way that makes sense. The code has gotten long-ish, but I think that's okay considering all the functionality. 
 -  [] Copyright issue?
 -  [] Better way to do timer?
+-  [] Way to smartly implement closing a div by clicking anywhere but the div?
 
 ## Project Requirements
 -- [x] Add link to playable app
