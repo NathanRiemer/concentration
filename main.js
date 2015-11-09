@@ -192,7 +192,7 @@ var Card = function(value, game) {
 	this.value = value;
 	this.$div = $('<div>');
 	this.urlString = game.urlBase + game.imageArray[value] + '\')';
-	this.$div.addClass('card sized');
+	this.$div.addClass('card sized animated flipInX');
 	this.showBack();
 };
 

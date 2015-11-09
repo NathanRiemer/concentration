@@ -12,7 +12,7 @@
   -  [] Position
   -  [x] Font
   -  [x] Layout
--  [] Animation?
+-  [x] Animation?
 -  [] Improve gallery:
   -  [] Add x (close) button to gallery
   -  [] Improve positioning
