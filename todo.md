@@ -2,10 +2,10 @@
 
 ## Appearance:
 -  [] Image files
-  -  [] Resize files
+  -  [x] Resize files
   -  [] Optimize for squareness
   -  [] Determine if any of the images are too close in appearance
--  [] Improve general appearance
+-  [x] Improve general appearance
   -  [x] Borders
   -  [x] Coloring
   -  [x] Size
@@ -13,7 +13,7 @@
   -  [x] Font
   -  [x] Layout
 -  [x] Animation?
--  [] Improve gallery:
+-  [x] Improve gallery:
   -  [x] Add x (close) button to gallery
   -  [x] Improve positioning
   -  [x] Improve new score highlighting
@@ -30,12 +30,12 @@
 -  [x] Cards resize to accomodate resized board at new game.
 
 ## Backstage Code improvements
--  [] Wrap pertinent code in document ready function
+-  [x] Wrap pertinent code in document ready function
 
 ## To ask Sung
 -  [x] Could I make a function that automatically grabbed all the files in a directory (based on input from the user) and put those files / their names in an array? -- not until server stuff
 -  [x] If not, how do I include other files (for the image array)? -- yes, just include above in html
--  [] Passing the calling object using this to another class' method -- kosher? (see Game.prototype.startTimer for an example) --bind
+-  [x] Passing the calling object using this to another class' method -- kosher? (see Game.prototype.startTimer for an example) --bind
 -  [x] Thoughts about the program's complexity? I did my best to separate out objects and methods in a way that makes sense. The code has gotten long-ish, but I think that's okay considering all the functionality. -- move Card out of Game
 -  [x] Copyright issue? -- meh
 -  [x] Better way to do timer? -- meh
@@ -46,6 +46,6 @@
 - [] Make sure to merge gh-pages branch up to master before final submission deadline!
 - [] Write description of app -- add thinking to code
 - [] Style 
-  -  [] Update file names to use snake_case
+  -  [x] Update file names to use snake_case
   -  [] Make sure other things are named appropriately
 - [] Prepare for lightning talk
