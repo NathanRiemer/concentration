@@ -36,7 +36,7 @@
 -  [x] Could I make a function that automatically grabbed all the files in a directory (based on input from the user) and put those files / their names in an array? -- not until server stuff
 -  [x] If not, how do I include other files (for the image array)? -- yes, just include above in html
 -  [] Passing the calling object using this to another class' method -- kosher? (see Game.prototype.startTimer for an example) --bind
--  [] Thoughts about the program's complexity? I did my best to separate out objects and methods in a way that makes sense. The code has gotten long-ish, but I think that's okay considering all the functionality. -- move Card out of Game
+-  [x] Thoughts about the program's complexity? I did my best to separate out objects and methods in a way that makes sense. The code has gotten long-ish, but I think that's okay considering all the functionality. -- move Card out of Game
 -  [x] Copyright issue? -- meh
 -  [x] Better way to do timer? -- meh
 -  [] Way to smartly implement closing a div by clicking anywhere but the div? -- outer div covering game board z-index, 

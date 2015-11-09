@@ -1,14 +1,13 @@
 var $board = $('.board');
-
 var $turnCounter = $('#turns');
 var $matchesLeft = $('#matches-left');
 var $display = $('.display');
 var $newGameBtn = $('.new-game.button');
 var $timer = $('#timer');
-
-var $highScoreBtn = $('.button.highscore');
 var $pauseBtn = $('.button.pause');
 
+//Action Bar
+var $highScoreBtn = $('.button.highscore');
 var $highscoreGallery = $('.highscore.gallery');
 
 var $optionsBtn = $('.button.options');
@@ -22,6 +21,7 @@ var scoreboard = {
 	seconds: {}
 };
 
+// Game object constructor and methods //
 var Game = function(numPairs) {
 	this.numPairs = numPairs;
 	this.numTurns = 0;
@@ -37,6 +37,7 @@ var Game = function(numPairs) {
 	this.cardBack = this.urlBase + this.imageFolder + '.png\')';
 }; //end of Game constructor
 
+//Game setup methods
 Game.prototype.getCards = function() {
 	this.setCardDimensions();
 	for (var i = 0; i < this.numPairs; i++) {
@@ -79,6 +80,7 @@ Game.prototype.startGame = function() {
 	this.startTimer();
 };
 
+//Game turn methods
 Game.prototype.evaluateTurn = function() {
 	this.numTurns++;
 	$turnCounter.text(this.numTurns);
@@ -109,6 +111,7 @@ Game.prototype.updateDisplay = function(message) {
 	$display.attr('class', message);
 };
 
+//Game timer methods
 Game.prototype.startTimer = function() {
 	$('.card').removeClass('hidden');
 	$pauseBtn.text('Pause Game');
@@ -139,17 +142,10 @@ Game.prototype.pauseTimer = function() {
 	}.bind(this));
 };
 
+//Game end-of-game methods
 Game.prototype.won = function() {
 	this.stopTimer();
 	this.checkForHighScore();
-};
-
-Game.prototype.clearBoard = function() {
-	$('.back').off();
-	$board.empty();
-	$('style').remove();
-	this.stopTimer();
-	$timer.text('0');
 };
 
 Game.prototype.checkForHighScore = function() {
@@ -181,6 +177,15 @@ Game.prototype.addHighScore = function(replaceRequired, category, value) {
 	$highscoreGallery.removeClass('hidden');
 };
 
+Game.prototype.clearBoard = function() {
+	$('.back').off();
+	$board.empty();
+	$('style').remove();
+	this.stopTimer();
+	$timer.text('0');
+};
+
+// Card object constructor and methods //
 
 var Card = function(value, game) {
 	this.game = game;
@@ -227,8 +232,7 @@ Card.prototype.reset = function() {
 	this.activate();
 };
 
-
-
+//Getting down to business
 
 var currentGame = new Game(6);
 currentGame.startGame();
@@ -262,12 +266,10 @@ $('.gallery.about, .gallery.highscore').on('click', function() {
 	$('.gallery').addClass('hidden');
 });
 
-
-//Need to move inside Game
-// $(window).resize(function() {
-// 	$('style').remove();
-// 	currentGame.setCardDimensions();
-// });
+$(window).resize(function() {
+	$('style').remove();
+	currentGame.setCardDimensions();
+});
 
 // var clickOutside = function(activeGallery) {
 // 	activeGallery.addClass('hidden');
