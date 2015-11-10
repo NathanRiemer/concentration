@@ -28,6 +28,7 @@
 	color: white;
 	text-align: center;
 	font-size: 30px;
+	border-radius: 50%;
 }
 
 .match {
@@ -40,6 +41,23 @@
 
 .victory {
 	background-color: gold;
+}
+
+.button {
+	border: 2px solid #D38447;
+	cursor: pointer;
+	background-color: #D38447;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.button:hover {
+	border: 2px solid #8F450D;
+}
+
+.button.inactive {
+	border: 2px solid #D38447;
 }
 
 .board {
@@ -66,23 +84,12 @@
 	cursor: pointer;
 }
 
-.button {
-	border: 2px solid #D38447;
-	cursor: pointer;
-	background-color: #D38447;
-	color: white;
-	border-radius: 5px;
-	text-align: center;
-}
-
-.button:hover {
-	border: 2px solid #8F450D;
-}
 .action .button {
 	width: 18%;
 	height: 70%;
 	margin: 5px 3% 0 3%;
 	display: inline-block;
+	float: left;
 }
 
 .inactive {
@@ -97,8 +104,8 @@
 .gallery {
 	position: absolute;
 	top: 10%;
-	left: 25%;
-	width: 50%;
+	margin: 0 25%;
+	max-width: 50%;
 	background-color: #CF464D;
 	padding: 20px;
 	border: 1px solid black;
@@ -121,4 +128,21 @@
 
 .gallery .button {
 	float: none;
+	margin: 5px 35%;
+	width: 30%;
+}
+
+.closer {
+	position: absolute;
+	top: 2px;
+	left: 4px;
+	cursor: pointer;
+}
+
+.highscore.list {
+	font-weight: bold;
+}
+
+li {
+	font-weight: normal;
 }

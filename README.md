@@ -70,18 +70,22 @@ Game.prototype.setCardDimensions = function() {
 	$style.html(css);
 };
 ```
+I used Daniel Eden's Animate.css from https://daneden.github.io/animate.css/ .
 
+I used http://paletton.com/ for help developing my color scheme.
+
+The DC/Marvel Superhero logos were culled from various places on the internet, via Google Image Search.
+All the dog photographs were taken from http://dogtime.com/dog-breeds/profiles
 
 ##Description of app:
 
-Gameplay: Click a card to turn it over.
+See [here](./lightning.md) for complete rundown of this project.
 
+Gameplay: Click a card to turn it over.
 A turn consists of two card flips.
 If the cards match they remain face up, otherwise they are returned to the face down position.
 Use the Options button to adjust the number of pairs and card contents that will be used the next time you click the New Game button.
-
 Currently you can select between 1 and 21 pairs, and three card styles: DC Super Hero Logos, Marvel Super Hero Logos, and Dogs. 
-
 The highest score (both lowest number of turns and fastest) is tracked for each number of pairs.
 
 ##Link to playable app:

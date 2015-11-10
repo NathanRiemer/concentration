@@ -5,6 +5,8 @@
 		<script type="text/javascript" src="jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" type="text/css" href="animate.css">
+		<script type="text/javascript" src="image_directory.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -32,12 +34,13 @@
 				<div class="new-game button">New Game</div>
 				<div class="options button">Options</div>
 				<div class="options gallery hidden">
+					<div class="closer">X</div>
 					<div>
 						<label for="#pair-number">Select number of pairs:</label>
 						<input id="pair-number" type="number" min=1 max=21 value=6>
 					</div>
 					<div>
-						<label>Select content</label>
+						<label>Select content: </label>
 						<select>
 							<option value="dcSuperHeroLogos">DC Super Hero Logos</option>
 							<option value="marvelSuperHeroLogos">Marvel Super Hero Logos</option>
@@ -48,6 +51,7 @@
 				</div> <!--.options-->
 				<div class="about button">About</div>
 				<div class="about gallery">
+					<div class="closer">X</div>
 					<h2>Concentrate!</h2>
 					<p><b>Gameplay:</b> Click a card to turn it over.</p> 
 					<p>A turn consists of two card flips. </p>
@@ -59,13 +63,12 @@
 				<div class="highscore button">High Scores</div>
 			</div> <!--.action.bar-->
 			<div class="highscore gallery hidden">
+				<div class="closer">X</div>
 				<ul class="highscore turns list">High Score (Fewest Turns):
 				</ul>
 				<ul class="highscore seconds list">High Score (Fastest):
 				</ul>
 			</div> <!--.highscore.gallery-->
 		</div> <!--.container-->
-		<script type="text/javascript" src="image_directory.js"></script>
-		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
