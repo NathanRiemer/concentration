@@ -11,7 +11,7 @@ $(document).ready(function() {
 	//Action Bar
 	var $highScoreBtn = $('.button.highscore');
 	var $highscoreGallery = $('.highscore.gallery');
-	
+
 	var $optionsBtn = $('.button.options');
 	var $optionsGallery = $('.options.gallery');
 
@@ -24,13 +24,13 @@ $(document).ready(function() {
 	};
 
 	// Game object constructor and methods //
-	var Game = function(numPairs, imageFolder) {
+	var Game = function(numPairs, cardContents) {
 		this.numPairs = numPairs;
 		this.numTurns = 0;
 		this.cards = [];
 		this.numMatchesLeft = numPairs;
 		this.turnPicks = [];
-		this.imageFolder = imageFolder;
+		this.imageFolder = cardContents;
 		this.imageArray = images[this.imageFolder];
 		this.shuffle(this.imageArray);
 		this.urlBase = 'url(\'./img/' + this.imageFolder + '/';
@@ -78,7 +78,6 @@ $(document).ready(function() {
 		$turnCounter.text(this.numTurns);
 		$matchesLeft.text(this.numMatchesLeft);
 		$('li').removeClass('new');
-		$highscoreGallery.addClass('hidden');
 		this.startTimer();
 	};
 
@@ -119,7 +118,7 @@ $(document).ready(function() {
 		$pauseBtn.text('Pause Game');
 		$pauseBtn.removeClass('inactive');
 		this.timerId = setInterval(this.tick, 1000, this);
-		$pauseBtn.one('click', function(event) {
+		$pauseBtn.one('click', function() {
 			this.pauseTimer();
 		}.bind(this));
 	};
@@ -139,7 +138,7 @@ $(document).ready(function() {
 		window.clearInterval(this.timerId);
 		$pauseBtn.text('Resume Game');
 		$('.card').addClass('hidden');
-		$pauseBtn.one('click', function(event) {
+		$pauseBtn.one('click', function() {
 			this.startTimer();
 		}.bind(this));
 	};
@@ -188,7 +187,6 @@ $(document).ready(function() {
 	};
 
 	// Card object constructor and methods //
-
 	var Card = function(value, game) {
 		this.game = game;
 		this.value = value;
