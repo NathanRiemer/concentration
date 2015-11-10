@@ -63,6 +63,21 @@
 
 
 ## Explain the technical challenges
+-  Determining the correct configuration of the Game and Card objects (I went back and forth between having them be separate objects and having the Card object be defined inside the Game object's constructor.)
+-  Styling is a struggle for me, it took me a long time to get the page looking like I wanted it to look.
+-  There were times when `this` didn't refer to what I wanted it to refer to (particularly for the timer function). I developed some work-arounds but Sung helped me out with `bind`.
+
 
 ## Explain possible improvements
--  
+-  Existing images could be improved, some aren't optimal for the cards' square shape
+-  Other image sets could be added
+-  It might be useful to create an object for buttons+galleries, since the About, Options, and High Score buttons and galleries share a number of behaviors.
+-  Add the functionality to close an open gallery by clicking outside of it. (Sung explained this to me, it would entail creating an additional div on of the rest of the board but underneath the gallery).
+-  Create a two player mode.
+
+
+## Personal Acknowledgements:
+-  Thanks to Phil, Anna, and particularly Sung for their advice over the course of the project.
+-  Thanks to De for her advice on my color scheme.
+-  Thanks to my wife Lisa for being out of town most of the weekend so I didn't feel bad about spending most of the time working on this. Also thanks go to Lisa for testing out my game.
+-  Thanks to my good friend Michael for being excited about having me over on Sunday to watch cartoons, eat pizza, and work on our homework (he's in business school).

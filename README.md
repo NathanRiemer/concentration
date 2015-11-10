@@ -70,12 +70,16 @@ Game.prototype.setCardDimensions = function() {
 	$style.html(css);
 };
 ```
+I used Daniel Eden's Animate.css from https://daneden.github.io/animate.css/ .
+
 I used http://paletton.com/ for help developing my color scheme.
 
 The DC/Marvel Superhero logos were culled from various places on the internet, via Google Image Search.
 All the dog photographs were taken from http://dogtime.com/dog-breeds/profiles
 
 ##Description of app:
+
+See [here](./lightning.md) for complete rundown of this project.
 
 Gameplay: Click a card to turn it over.
 A turn consists of two card flips.
